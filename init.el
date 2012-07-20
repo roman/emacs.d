@@ -30,8 +30,8 @@
       ;; Emacs 24+ includes ELPA, but requires some extra setup
       ;; to use the (better) mermelade repo
       (if (>= emacs-major-version 24)
-	(add-to-list 'package-archives
-		     '("marmalade" . "http://marmalade-repo.org/packages/") t))
+        (add-to-list 'package-archives
+                     '("marmalade" . "http://marmalade-repo.org/packages/") t))
       (package-initialize))
   (install-elpa))
 
@@ -43,42 +43,54 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
+; Ensure installation of el-get, if not there automatically
+; install it
 (unless (require 'el-get nil t)
   (install-el-get))
 
 ;;- Adding Extra sources
-
-; Ensure installation of el-get, if not there automatically
-; install it
 (setq el-get-generate-autoloads t
       el-get-sources '(
-	(:name rinari
-	 :type git
-	 :url "https://github.com/eschulte/rinari.git")
+        (:name rinari
+         :type git
+         :url "https://github.com/eschulte/rinari.git")
 
-	(:name flip-tables
-	 :type http
-	 :url "http://www.emacswiki.org/emacs/download/flip-tables.el")
+        (:name flip-tables
+         :type http
+         :url "http://www.emacswiki.org/emacs/download/flip-tables.el")
 
-	(:name color-theme-sunburst
-	 :type git
-	 :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
+        (:name rainbow-mode
+         :type git
+         :url "https://github.com/emacsmirror/rainbow-mode.git")
+
+        (:name rainbow-delimiters
+         :type git
+         :url "https://github.com/jlr/rainbow-delimiters.git")
+
+        (:name color-theme-sunburst
+         :type git
+         :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
 
 ;;- Setting up my dependencies
 
 (setq my-el-get-packages
       '(
-       ; OH MY GOT! I can't live without dependencies
+       ; OH MEIN GOT! I can't live without dependencies
        package
        evil
        paredit
        magit
+
+       ; Lispy languages
+       rainbow-mode
+       rainbow-delimiters
 
        ; Ruby mode extensions
        ruby-mode
        ruby-compilation
        inf-ruby
        flymake-ruby
+
        ; Rails mode extensions
        rinari
        rspec-mode
@@ -93,27 +105,72 @@
 
 (el-get 'wait my-el-get-packages)
 
-;;- Please do not create backup files
-(setq make-backup-files nil)
+;;- Configuration
 
-;;- Enable modes by default
-
+;; Enable modes by default
 (ido-mode 1)
 (evil-mode 1)
+(global-whitespace-mode 1)
 
-;;- Allow version control info on modline
+
+;; Please do not create backup files
+(setq make-backup-files nil)
+
+;; Allow version control info on modline
 (vc-mode 1)
 
-;;- Remove stupid menubar from the top
+;; Remove stupid menubar from the top
 (menu-bar-mode 0)
 
-;;- Specify sunburst theme
+;; Specify sunburst theme
 
 (require 'color-theme-sunburst)
 (color-theme-sunburst)
 
-;;- On shells, please handle properly the ansi escape codes
+;; Accept utf-8 characters on the terminal
+
+(set-terminal-coding-system 'utf-8-unix)
+
+;; Whitespace/Tabs customization
+
+; the tab-width is 4 by default
+(setq tab-width 4)
+
+; don't highlight lines with 8 spaces or more at the start
+(setq indent-tabs-mode nil)
+
+
+; whitespace-mode should only show this properties
+(setq whitespace-style
+  '(tabs spaces trailing lines space-before-tab
+    newline empty space-after-tab
+    space-mark tab-mark newline-mark))
+
+
+; Special characters for newline and tabs
+(setq whitespace-display-mappings
+  '(
+     (space-mark ?\ [? ])
+     (newline-mark ?\n [?\u00AC ?\n])
+     (tab-mark ?\t [?\u25B8 ?\t])
+   ))
+
+; special colores for newline and tab character
+(custom-set-faces
+ '(whitespace-space
+   ((((class color) (background dark))
+     (:background "#111" :foreground "white"))
+    (((class color) (background light))
+     (:background "yellow" :foreground "black"))
+    (t (:inverse-video t))))
+ '(whitespace-newline
+   ((((class color) (background dark))
+     (:background "#111" :foreground "#111"))))
+ '(whitespace-tab
+   ((((class color) (background dark))
+     (:background "#111" :foreground "#111")))))
+
+
+;; on shells, please handle properly the ansi escape codes
 (add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-
+(add-hook 'shell-mode-hook    'ansi-color-for-comint-mode-on)
