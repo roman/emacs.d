@@ -101,6 +101,7 @@
        ruby-mode
        ruby-compilation
        inf-ruby
+       ri
        flymake-ruby
 
        ; Rails mode extensions

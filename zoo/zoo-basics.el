@@ -1,11 +1,18 @@
-; always have on ido mode
 (ido-mode 1)
+(show-paren-mode 1)
+(blink-cursor-mode 1)
 
 ; always have off menu-bar
 (menu-bar-mode 0)
 
 ; accept utf-8 characters on the terminal
 (set-terminal-coding-system 'utf-8-unix)
+
+; don't want to write yes
+(fset 'yes-or-no 'y-or-n)
+
+; don't make backup files
+(setq make-backup-files nil)
 
 ; on shells, please handle properly the ansi escape codes
 (add-hook 'shell-mode-hook  'ansi-color-for-comint-mode-on)
