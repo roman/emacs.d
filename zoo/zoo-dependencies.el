@@ -1,4 +1,5 @@
-; This dependencies module is inspired on Tavis Rudd's emacs.d, and
+
+                                        ; This dependencies module is inspired on Tavis Rudd's emacs.d, and
 ; Sebastian Cevey blogpost, both of these can be found at:
 ;
 ; * http://github.com/tavisrudd/emacs.d
@@ -30,7 +31,7 @@
       ;; Emacs 24+ includes ELPA, but requires some extra setup
       ;; to use the (better) mermelade repo
       (if (>= emacs-major-version 24)
-        (add-to-list 'package-archives
+        (add-to-list 'package-alist
                      '("marmalade" . "http://marmalade-repo.org/packages/") t))
       (package-initialize))
   (install-elpa))
@@ -92,6 +93,7 @@
        evil-surround
        paredit
        magit
+       multi-term
 
        ; Lispy languages
        rainbow-mode
