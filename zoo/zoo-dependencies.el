@@ -99,6 +99,10 @@
        rainbow-mode
        rainbow-delimiters
 
+       ; Clojure mode extensions
+       clojure-mode
+       swank-clojure
+
        ; Ruby mode extensions
        ruby-mode
        ruby-compilation
