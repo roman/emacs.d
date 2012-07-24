@@ -5,3 +5,4 @@
 (require 'zoo-theme)
 (require 'zoo-whitespace)
 (require 'zoo-ruby)
+(require 'zoo-clojure)
