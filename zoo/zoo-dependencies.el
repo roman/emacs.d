@@ -1,5 +1,4 @@
-
-                                        ; This dependencies module is inspired on Tavis Rudd's emacs.d, and
+; This dependencies module is inspired on Tavis Rudd's emacs.d, and
 ; Sebastian Cevey blogpost, both of these can be found at:
 ;
 ; * http://github.com/tavisrudd/emacs.d
@@ -27,13 +26,13 @@
 (add-to-list 'load-path "~/.emacs.d/elpa")
 
 (if (require 'package nil t)
-    (progn
-      ;; Emacs 24+ includes ELPA, but requires some extra setup
-      ;; to use the (better) mermelade repo
-      (if (>= emacs-major-version 24)
-        (add-to-list 'package-alist
-                     '("marmalade" . "http://marmalade-repo.org/packages/") t))
-      (package-initialize))
+    ;(progn
+    ;  ;; Emacs 24+ includes ELPA, but requires some extra setup
+    ;  ;; to use the (better) mermelade repo
+    ;  (package-initialize)
+    ;  (if (>= emacs-major-version 24)
+    ;      (add-to-list 'package-archives
+    ;                   '("marmalade" . "http://marmalade-repo.org/packages/") t)))
   (install-elpa))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -68,6 +67,10 @@
         (:name rainbow-mode
          :type git
          :url "https://github.com/emacsmirror/rainbow-mode.git")
+
+        (:name clojure-mode
+         :type git
+         :url "https://github.com/technomancy/clojure-mode.git")
 
         (:name rainbow-delimiters
          :type git
