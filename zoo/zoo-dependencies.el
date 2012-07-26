@@ -106,6 +106,9 @@
        clojure-mode
        swank-clojure
 
+       ; Haskell mode extensions
+       haskell-mode
+
        ; Ruby mode extensions
        ruby-mode
        ruby-compilation
