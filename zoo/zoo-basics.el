@@ -14,8 +14,6 @@
 ; don't make backup files
 (setq make-backup-files nil)
 
-; on shells, please handle properly the ansi escape codes
-(add-hook 'shell-mode-hook  'ansi-color-for-comint-mode-on)
 
 ; disable keys that make *me* slower, but can't stop using them
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")

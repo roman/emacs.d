@@ -26,7 +26,7 @@
           (delete-char -1)
           (set-buffer-modified-p modified)
           (push 'escape unread-command-events))
-       (t
+       (t ; otherwise
           (setq unread-command-events (append unread-command-events
                                               (list evt))))))))
 

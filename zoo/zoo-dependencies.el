@@ -26,6 +26,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa")
 
 (if (require 'package nil t)
+  (package-initialize)
     ;(progn
     ;  ;; Emacs 24+ includes ELPA, but requires some extra setup
     ;  ;; to use the (better) mermelade repo
