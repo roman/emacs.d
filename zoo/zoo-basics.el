@@ -1,3 +1,6 @@
+(require 'zoo-rainbow-delimiters)
+(require 'zoo-paredit)
+
 (ido-mode 1)
 (show-paren-mode 1)
 (blink-cursor-mode 1)
@@ -17,5 +20,10 @@
 
 ; disable keys that make *me* slower, but can't stop using them
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
+
+; Have rainbow delimiters on lisp
+(add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-rainbow-delimiters)
+(add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-paredit)
+
 
 (provide 'zoo-basics)

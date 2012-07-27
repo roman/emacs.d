@@ -2,7 +2,10 @@
 (require 'surround nil)
 (require 'paredit nil)
 
-;((hello) world)
+(defun zoo/turn-on-paredit ()
+  (interactive)
+  (paredit-mode 1))
+
 
 (defun zoo/paredit-backward-edit (operation)
   (interactive
