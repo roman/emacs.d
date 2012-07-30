@@ -102,6 +102,7 @@
        paredit
        magit
        multi-term
+       ack
 
        ; Lispy languages
        rainbow-mode
