@@ -1,7 +1,7 @@
 ; on shells, please handle properly the ansi escape codes
 (add-hook 'shell-mode-hook  'ansi-color-for-comint-mode-on)
 
-(setq multi-term-program "/bin/zsh")
+(setq multi-term-program "/bin/bash")
 
 ; don't switch to other multi-term when closing
 ; the current one
