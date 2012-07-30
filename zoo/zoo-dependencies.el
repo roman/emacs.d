@@ -83,7 +83,11 @@
 
         (:name color-theme-sunburst
          :type git
-         :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
+         :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")
+
+        (:name nxhtml
+         :type git
+         :url "https://github.com/emacsmirror/nxhtml.git")))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;;- Setting my dependencies
@@ -117,6 +121,7 @@
        inf-ruby
        ri
        flymake-ruby
+       nxhtml
 
        ; Rails mode extensions
        rinari
