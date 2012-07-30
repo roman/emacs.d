@@ -120,7 +120,7 @@
        inf-ruby
        ri
        flymake-ruby
-       nxhtml
+       ;nxhtml
 
        ; Rails mode extensions
        rinari
