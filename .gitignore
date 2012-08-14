@@ -2,6 +2,8 @@
 ~*
 \#*
 .#*
+tramp
+*.elc
 
 # Don't save el-get and elpa folders, this are generated automatically
 
