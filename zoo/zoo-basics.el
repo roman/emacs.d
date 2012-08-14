@@ -8,6 +8,9 @@
 ; always have off menu-bar
 (menu-bar-mode 0)
 
+; always reload files when changed
+(global-auto-revert-mode t)
+
 ; accept utf-8 characters on the terminal
 (set-terminal-coding-system 'utf-8-unix)
 
