@@ -10,3 +10,4 @@
 (require 'zoo-whitespace)
 (require 'zoo-ruby)
 (require 'zoo-clojure)
+(require 'zoo-haskell)

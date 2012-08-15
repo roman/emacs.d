@@ -88,6 +88,10 @@
         (:name winner-mode
          :type emacswiki)
 
+        (:name ghc-mod
+         :type git
+         :url "https://github.com/kazu-yamamoto/ghc-mod.git")
+
         (:name color-theme-sunburst
          :type git
          :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
@@ -120,6 +124,7 @@
 
        ; Haskell mode extensions
        haskell-mode
+       ghc-mod
 
        ; Ruby mode extensions
        ruby-mode
