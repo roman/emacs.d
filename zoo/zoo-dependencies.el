@@ -81,6 +81,13 @@
          :type git
          :url "https://github.com/timcharper/evil-surround.git")
 
+        (:name window-numbering
+         :type git
+         :url "https://github.com/nschum/window-numbering.el.git")
+
+        (:name winner-mode
+         :type emacswiki)
+
         (:name color-theme-sunburst
          :type git
          :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
@@ -99,6 +106,9 @@
        magit
        multi-term
        ack
+       sunrise-commander
+       window-numbering
+       winner-mode
 
        ; Lispy languages
        rainbow-mode

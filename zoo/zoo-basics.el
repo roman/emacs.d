@@ -1,9 +1,10 @@
 (require 'zoo-rainbow-delimiters)
 (require 'zoo-paredit)
 
-(ido-mode 1)
 (show-paren-mode 1)
 (blink-cursor-mode 1)
+(window-numbering-mode 1)
+(winner-mode 1)
 
 ; always have off menu-bar
 (menu-bar-mode 0)

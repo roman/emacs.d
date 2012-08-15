@@ -3,6 +3,7 @@
 (require 'zoo-rainbow-delimiters)
 (require 'zoo-paredit)
 (require 'zoo-basics)
+(require 'zoo-ido)
 (require 'zoo-term)
 (require 'zoo-evil)
 (require 'zoo-theme)
