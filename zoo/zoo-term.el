@@ -1,6 +1,18 @@
-; on shells, please handle properly the ansi escape codes
-(add-hook 'shell-mode-hook  'ansi-color-for-comint-mode-on)
+;;;;;;;;;;;;;;;;;;;;
+;; Evil Extensions for terminal
+;;;;;;;;;;;;;;;;;;;;
 
+(define-minor-mode evil-term-mode
+  "Evil minor mode for multiterm"
+  :keymap (make-sparse-keymap))
+
+(evil-define-key 'insert evil-term-mode-map (kbd "C-r") 'term-send-reverse-search-history)
+(add-hook 'term-mode-hook 'evil-term-mode)
+
+;;;;;;;;;;;;;;;;;;;;
+
+; on shells, please handle properly the ansi escape codes
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq multi-term-program "/bin/bash")
 
 ; don't switch to other multi-term when closing
