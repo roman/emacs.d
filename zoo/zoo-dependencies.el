@@ -132,6 +132,8 @@
        inf-ruby
        ri
        flymake-ruby
+       ruby-block
+       ruby-end
 
        ; Rails mode extensions
        rinari

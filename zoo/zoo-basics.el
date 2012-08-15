@@ -29,5 +29,4 @@
 (add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-rainbow-delimiters)
 (add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-paredit)
 
-
 (provide 'zoo-basics)

@@ -1,6 +1,9 @@
 ; whitespace always on
 (global-whitespace-mode 1)
 
+; f5 should be whitespace-cleanup
+(global-set-key (kbd "<f5>") 'whitespace-cleanup)
+
 ; the tab-width is 4 by default
 (setq tab-width 4)
 
@@ -12,6 +15,7 @@
   '(tabs spaces trailing lines space-before-tab
     newline empty space-after-tab
     space-mark tab-mark newline-mark))
+
 
 ; special characters for newline and tabs
 (setq whitespace-display-mappings
