@@ -25,8 +25,13 @@
 ; disable keys that make *me* slower, but can't stop using them
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
 
-; Have rainbow delimiters on lisp
-(add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-rainbow-delimiters)
-(add-hook 'emacs-lisp-mode-hook 'zoo/turn-on-paredit)
+(defun zoo/emacs-lisp-mode-hook ()
+  (interactive)
+  (zoo/turn-on-paredit)
+  (zoo/turn-on-rainbow-delimiters)
+  (eldoc-mode 1))
+
+(add-hook 'emacs-lisp-mode-hook 'zoo/emacs-lisp-mode-hook)
+
 
 (provide 'zoo-basics)
