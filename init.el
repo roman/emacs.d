@@ -12,6 +12,7 @@
 (require 'zoo-bookmarks)
 (require 'zoo-whitespace)
 (require 'zoo-ruby)
+(require 'zoo-java)
 (require 'zoo-clojure)
 (require 'zoo-haskell)
 (require 'zoo-recentf-history-etc)
