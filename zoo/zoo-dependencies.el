@@ -125,6 +125,9 @@
        clojure-mode
        swank-clojure
 
+       ;; Puppet mode extensions
+       puppet-mode
+
        ; Haskell mode extensions
        haskell-mode
        ghc-mod
