@@ -2,12 +2,16 @@
 (require 'ghc)
 (require 'zoo.path)
 
-(defun zoo-haskell/is-cabal-dev-present? ()
+;; NOTE:
+;; Using zoo.path/rfind-file instead of  locate-dominating-file 
+;; because the latter doesn't accept a regexp as the file name
+
+(defun zoo/is-cabal-dev-present? ()
   (let ((current-dir (zoo.path/pwd)))
     (and (zoo.path/rfind-file "*.cabal" current-dir)
          (zoo.path/rfind-file "cabal-dev" current-dir))))
 
-(defun zoo-haskell/set-compile-command ()
+(defun zoo/haskell-set-compile-command ()
   (if (zoo-haskell/is-cabal-dev-present?)
       (progn
         (set (make-local-variable 'haskell-program-name)
@@ -17,14 +21,14 @@
         (set (make-local-variable 'compile-command)
              "cabal-dev build"))))
 
+;; Reset the haskell-mode-hook
 (setq haskell-mode-hook nil)
-
 (defun zoo/haskell-mode-hook ()
   (interactive)
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-simple-indent)
   (ghc-init)
-  (zoo-haskell/set-compile-command))
+  (zoo/haskell-set-compile-command))
 
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
 
