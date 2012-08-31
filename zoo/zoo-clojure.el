@@ -2,8 +2,14 @@
 (require 'zoo-paredit)
 (require 'zoo-rainbow-delimiters)
 
-(add-hook 'clojure-mode-hook 'zoo/turn-on-paredit)
-(add-hook 'clojure-mode-hook 'zoo/turn-on-rainbow-delimiters)
+(defun zoo/clojure-mode-hook
+  (interactive)
+  (require 'clojure-test-mode)
+  (setq clojure-test-ns-segment-position 1)
+  (zoo/turn-on-paredit)
+  (zoo/turn-on-rainbow-delimiters))
+
+(add-hook 'clojure-mode-hook 'zoo/clojure-mode-hook)
 
 (defun dss/clojure-run-tests ()
   (interactive)
@@ -37,6 +43,7 @@
     (clojure-jump-to-test)))
 
 (defvar f4-map (make-sparse-keymap))
+(define-key global-map [(f4)] f4-map)
 (define-key f4-map "-" 'dss/clojure-run-tests)
 (define-key f4-map "c" 'dss/slime-repl-clear)
 (define-key f4-map "p" 'dss/clojure-jump-to-project)

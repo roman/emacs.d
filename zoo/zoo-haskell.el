@@ -18,12 +18,14 @@
              "cabal-dev build"))))
 
 (setq haskell-mode-hook nil)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (ghc-init)
-            (zoo-haskell/set-compile-command)))
 
+(defun zoo/haskell-mode-hook ()
+  (interactive)
+  (turn-on-haskell-doc-mode)
+  (turn-on-haskell-simple-indent)
+  (ghc-init)
+  (zoo-haskell/set-compile-command))
+
+(add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
 
 (provide 'zoo-haskell)

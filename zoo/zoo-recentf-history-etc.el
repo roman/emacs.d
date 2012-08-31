@@ -1,21 +1,34 @@
-(defvar zoo-ephemeral-dir "~/.emacs.ephemeral")
+(require 'zoo-basics)
+
+;; Persist code bookmarks
 (setq bookmark-save-flag 1)
 
-(setq savehist-file (concat zoo-ephemeral-dir "history"))
-(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+;; Persist minibuffer history
 (savehist-mode 1)
+(setq savehist-file
+      (concat zoo-ephemeral-dir "history"))
 
+;; Append to the history also other rings
+(setq savehist-additional-variables
+      '(kill-ring search-ring regexp-search-ring))
+
+;; Add support for saving bookmarks on different
+;; emacs sessions
+;; Ask Tavis: what's the difference btw bookmark and this?
 (require 'saveplace)
-(setq save-place-file (concat zoo-ephemeral-dir "saveplace"))
+(setq save-place-file
+      (concat zoo-ephemeral-dir "saveplace"))
 (setq-default save-place t)
 
-(setq recentf-save-file (concat zoo-ephemeral-dir "recentf"))
+;; Allow to lookup recent accessed files easily
 (require 'recentf)
 (recentf-mode 1)
+(setq recentf-save-file
+      (concat zoo-ephemeral-dir "recentf"))
 (setq recentf-max-saved-items 150)
 (setq recentf-max-menu-items 60)
+;; Update the recent files list every 1200 seconds
 (run-with-timer (* 20 60) (* 2 60 60) (lambda () (recentf-save-list)))
-;(add-hook 'find-file-hook (lambda () (recentf-save-list)))
 (add-hook 'recentf-dialog-mode-hook
           (lambda ()
             (linum-mode +1)))
@@ -41,3 +54,4 @@
 ;; (add-hook 'after-init-hook 'session-initialize)
 ;; (setq session-save-file (concat zoo-ephemeral-dir "session"))
 ;; (setq session-save-file-coding-system 'utf-8)
+(provide 'zoo-recentf-history-etc)

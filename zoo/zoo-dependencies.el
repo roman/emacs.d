@@ -91,7 +91,9 @@
         (:name ghc-mod
          :type git
          :url "https://github.com/kazu-yamamoto/ghc-mod.git")
-
+        
+        (:name bm :type http :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
+        
         (:name color-theme-sunburst
          :type git
          :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
@@ -113,6 +115,7 @@
        sunrise-commander
        window-numbering
        winner-mode
+       bm
 
        ; Lispy languages
        rainbow-mode

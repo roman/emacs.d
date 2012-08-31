@@ -1,37 +1,38 @@
-(require 'zoo-rainbow-delimiters)
-(require 'zoo-paredit)
 
+;; Always show the matching parenthesis
 (show-paren-mode 1)
+
+;; Blink the cursor for easy tracking
 (blink-cursor-mode 1)
+
+;; Number the windows for easy access (alt-#)
 (window-numbering-mode 1)
+
+;; Keep track of windows layouts, to easily get
+;; back to the previous one
 (winner-mode 1)
 
-; always have off menu-bar
+;; Always have off menu-bar.
 (menu-bar-mode 0)
 
-; always reload files when changed
+;; Always reload files when changed.
 (global-auto-revert-mode t)
 
-; accept utf-8 characters on the terminal
+;; Accept utf-8 characters on the terminal.
 (set-terminal-coding-system 'utf-8-unix)
 
-; don't want to write yes
-(fset 'yes-or-no 'y-or-n)
+;; Don't want to write yes for everything.
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq confirm-kill-emacs t)
 
-; don't make backup files
+;; Don't make backup files.
 (setq make-backup-files nil)
 (auto-save-mode 0)
 
-; disable keys that make *me* slower, but can't stop using them
+;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
 
-(defun zoo/emacs-lisp-mode-hook ()
-  (interactive)
-  (zoo/turn-on-paredit)
-  (zoo/turn-on-rainbow-delimiters)
-  (eldoc-mode 1))
-
-(add-hook 'emacs-lisp-mode-hook 'zoo/emacs-lisp-mode-hook)
-
+;; Default folder for ephemeral content
+(defvar zoo-ephemeral-dir "~/.emacs.ephemeral")
 
 (provide 'zoo-basics)

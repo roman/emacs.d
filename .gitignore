@@ -7,6 +7,7 @@ tramp
 
 # Don't save el-get and elpa folders, this are generated automatically
 
+tmp/
 auto-save-list
 el-get
 elpa

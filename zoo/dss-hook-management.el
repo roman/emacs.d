@@ -1,4 +1,3 @@
-
 (defun dss/-get-hook-funcs (hook)
   (delq nil (mapcar
              (lambda (e) (if (symbolp e) e))
