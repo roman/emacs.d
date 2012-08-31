@@ -23,7 +23,7 @@
 
 ;; Don't want to write yes for everything.
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq confirm-kill-emacs t)
+(setq confirm-kill-emacs 'yes-or-no-p)
 
 ;; Don't make backup files.
 (setq make-backup-files nil)
@@ -34,5 +34,9 @@
 
 ;; Default folder for ephemeral content
 (defvar zoo-ephemeral-dir "~/.emacs.ephemeral")
+
+;; Keep all backup files in ephemeral
+(setq backup-directory-alist '((".*" . ,zoo-ephemeral-dir)))
+
 
 (provide 'zoo-basics)
