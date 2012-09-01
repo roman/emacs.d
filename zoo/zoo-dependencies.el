@@ -116,6 +116,7 @@
        window-numbering
        winner-mode
        bm
+       flymake-cursor
 
        ; Lispy languages
        rainbow-mode
