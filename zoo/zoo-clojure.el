@@ -1,15 +1,7 @@
 (require 'paredit)
 (require 'zoo-paredit)
 (require 'zoo-rainbow-delimiters)
-
-(defun zoo/clojure-mode-hook
-  (interactive)
-  (require 'clojure-test-mode)
-  (setq clojure-test-ns-segment-position 1)
-  (zoo/turn-on-paredit)
-  (zoo/turn-on-rainbow-delimiters))
-
-(add-hook 'clojure-mode-hook 'zoo/clojure-mode-hook)
+(require 'zoo-keybinding)
 
 (defun dss/clojure-run-tests ()
   (interactive)
@@ -23,9 +15,7 @@
   (save-window-excursion
     (slime-switch-to-output-buffer)
     (slime-repl-clear-buffer)
-    (end-of-buffer)
-    ;(dss/sync-point-all-windows)
-    ))
+    (end-of-buffer)))
 
 (defun dss/clojure-jump-to-project ()
   "Jump to project.clj"
@@ -42,11 +32,20 @@
       (clojure-test-jump-to-implementation)
     (clojure-jump-to-test)))
 
-(defvar f4-map (make-sparse-keymap))
-(define-key global-map [(f4)] f4-map)
-(define-key f4-map "-" 'dss/clojure-run-tests)
-(define-key f4-map "c" 'dss/slime-repl-clear)
-(define-key f4-map "p" 'dss/clojure-jump-to-project)
-(define-key f4-map "j" 'dss/clojure-jump-between-tests-and-code)
+(defun zoo/set-clojure-keybindings ()
+  (interactive)
+  (define-key f4-map "-" 'dss/clojure-run-tests)
+  (define-key f4-map "c" 'dss/slime-repl-clear)
+  (define-key f4-map "p" 'dss/clojure-jump-to-project)
+  (define-key f4-map "j" 'dss/clojure-jump-between-tests-and-code))
+
+(defun zoo/clojure-mode-hook ()
+  (interactive)
+  (setq clojure-test-ns-segment-position 1)
+  (zoo/turn-on-paredit)
+  (zoo/turn-on-rainbow-delimiters)
+  (zoo/set-clojure-keybindings))
+
+(add-hook 'clojure-mode-hook 'zoo/clojure-mode-hook)
 
 (provide 'zoo-clojure)
