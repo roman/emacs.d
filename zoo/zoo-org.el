@@ -1,3 +1,4 @@
+(require 'zoo-keybinding)
 ;; Most of the settings are being ported from Tavis Rudd's org mode
 ;; configuration
 ;; https://github.com/tavisrudd/emacs.d
@@ -58,9 +59,6 @@
 ;; The f8 keybinding is going to be dedicated for org mode
 ;; use only, that's why we define the keybindings for f8 in this
 ;; module
-
-(defvar f8-map (make-sparse-keymap))
-(define-key global-map [(f8)] f8-map)
 
 (defun dss/org-clock-in-select ()
   "C-u C-c C-x C-i -> org-clock-select-task"

@@ -8,6 +8,9 @@
 ;; Number the windows for easy access (alt-#)
 (window-numbering-mode 1)
 
+;; Show both line and column number
+(column-number-mode 1)
+
 ;; Keep track of windows layouts, to easily get
 ;; back to the previous one
 (winner-mode 1)
@@ -36,7 +39,7 @@
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
 
 ;; Default folder for ephemeral content
-(defvar zoo-ephemeral-dir "~/.emacs.ephemeral")
+(defvar zoo-ephemeral-dir "~/.emacs.ephemeral/")
 
 ;; Keep all backup files in ephemeral
 (setq backup-directory-alist '((".*" . ,zoo-ephemeral-dir)))
