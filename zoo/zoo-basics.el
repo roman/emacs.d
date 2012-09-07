@@ -39,7 +39,9 @@
 (defvar zoo-ephemeral-dir "~/.emacs.ephemeral/")
 
 ;; Keep all backup files in ephemeral
-(setq backup-directory-alist '((".*" . ,zoo-ephemeral-dir)))
-
+(defvar user-temporary-file-directory (concat zoo-ephemeral-dir "tmp/"))
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist `(("." . ,user-temporary-file-directory)))
 
 (provide 'zoo-basics)
