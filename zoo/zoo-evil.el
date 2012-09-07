@@ -92,39 +92,53 @@
 ;; so we are going to append it ourselves at the
 ;; start of the mode-line-format list
 (setq evil-mode-line-format nil)
-(defadvice evil-refresh-mode-line (after evil)
-    (add-to-list 'mode-line-format " ")
-    (add-to-list 'mode-line-format
-                 '(:eval evil-mode-line-tag))
-    (force-mode-line-update))
+(setq mode-line-clock-in-tag t)
+(defadvice evil-refresh-mode-line (after zoo-evil-refresh-mode-line activate)
+  (add-to-list 'mode-line-format " ")
+  (when (and (boundp 'mode-line-clock-in-tag)
+             (not (zoo/org-clocking-p)))
+    (add-to-list 'mode-line-format '(:eval mode-line-clock-in-tag)))
+  (add-to-list 'mode-line-format
+               '(:eval evil-mode-line-tag))
+  (force-mode-line-update))
 
-(defun zoo/change-evil-insert-state-tag ()
+(defun zoo/highlight-clock-in ()
   (interactive)
-  (let ((fg-color (if (zoo/org-clocking-p)
-                      "#005F87"
-                    "#E52020")))
-    (setq evil-insert-state-tag
-          (propertize " INSERT "
-                      'face
-                      (list (list :background "white")
-                            (list :foreground fg-color)
-                            'bold)))))
-
-(defun zoo/change-evil-insert-modeline ()
-  (interactive)
-  (if (zoo/org-clocking-p)
-      (progn
-        (set-face-foreground 'modeline "white")
-        (set-face-background 'modeline "#0087AF"))
-    (progn
-      (set-face-foreground 'modeline "black")
-      (set-face-background 'modeline "#FF3366"))))
-
+  (if (and (boundp 'mode-line-clock-in-tag)
+           mode-line-clock-in-tag
+           (not (zoo/org-clocking-p)))
+      (setq mode-line-clock-in-tag
+            (propertize " CLOCK-IN "
+                        'face
+                        '(:background "#FF3366"
+                          :foreground "white"
+                          'bold)))
+    (when mode-line-clock-in-tag
+        (setq mode-line-clock-in-tag ""))))
 
 (defun zoo/highlight-insert-mode ()
   (interactive)
-  (zoo/change-evil-insert-state-tag)
-  (zoo/change-evil-insert-modeline))
+  (set-face-foreground 'modeline "white")
+  (set-face-background 'modeline "#0087AF")
+  (setq evil-insert-state-tag
+        (propertize " I "
+                    'face
+                    '(:background "white"
+                      :foreground "#005F87"
+                      'bold))))
+
+(defun zoo/highlight-emacs-mode ()
+  (interactive)
+  ;; modeline
+  (set-face-foreground 'modeline "black")
+  (set-face-background 'modeline "#E6E5E4")
+  ;; emacs state tag
+  (setq evil-emacs-state-tag
+        (propertize " E "
+                    'face
+                    '(:background "#5F005F"
+                      :foreground "white"
+                      'bold))))
 
 (defun zoo/highlight-normal-mode ()
   (interactive)
@@ -133,24 +147,27 @@
   (set-face-background 'modeline "#E6E5E4")
   ;; normal state tag
   (setq evil-normal-state-tag
-        (propertize " NORMAL "
-                    'face '((:background "#AFD700")
-                            (:foreground "#005F00")
-                            'bold))))
-
-(defun zoo/evil-mode ()
-  (interactive)
-  (ad-activate 'evil-refresh-mode-line))
+        (propertize " N "
+                    'face
+                    '(:background "#AFD700"
+                      :foreground "#005F00"
+                      'bold))))
 
 (add-hook 'evil-insert-state-entry-hook  'zoo/highlight-insert-mode)
+(add-hook 'evil-insert-state-entry-hook  'zoo/highlight-clock-in)
+(add-hook 'evil-emacs-state-entry-hook   'zoo/highlight-emacs-mode)
+(add-hook 'evil-emacs-state-entry-hook   'zoo/highlight-clock-in)
 (add-hook 'evil-normal-state-entry-hook  'zoo/highlight-normal-mode)
-(add-hook 'evil-after-load-hook 'zoo/evil-mode)
+(add-hook 'evil-normal-state-entry-hook  'zoo/highlight-clock-in)
 
 
+(global-set-key (kbd "<f7> e") 'evil-emacs-state)
+(global-set-key (kbd "<f7> n") 'evil-normal-state)
+
+(zoo/highlight-insert-mode)
 (zoo/highlight-normal-mode)
-(zoo/change-evil-insert-state-tag)
+(zoo/highlight-emacs-mode)
 (evil-mode 1)
 (surround-mode 1)
-
 
 (provide 'zoo-evil)
