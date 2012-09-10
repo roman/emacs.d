@@ -153,13 +153,42 @@
                       :foreground "#005F00"
                       'bold))))
 
+(defun zoo/highlight-visual-mode ()
+  (interactive)
+  (set-face-foreground 'modeline "black")
+  (set-face-background 'modeline "#E6E5E4")
+  (setq evil-visual-state-tag
+        (propertize " V "
+                    'face
+                    '(:background "#FF8700"
+                      :foreground "#870000"
+                      'bold))))
+
+(defun zoo/highlight-replace-mode ()
+  (interactive)
+  (set-face-foreground 'modeline "black")
+  (set-face-background 'modeline "#E6E5E4")
+  (setq evil-replace-state-tag
+        (propertize " R "
+                    'face
+                    '(:background "#D70000"
+                      :foreground "white"
+                      'bold))))
+
 (add-hook 'evil-insert-state-entry-hook  'zoo/highlight-insert-mode)
 (add-hook 'evil-insert-state-entry-hook  'zoo/highlight-clock-in)
+
 (add-hook 'evil-emacs-state-entry-hook   'zoo/highlight-emacs-mode)
 (add-hook 'evil-emacs-state-entry-hook   'zoo/highlight-clock-in)
+
 (add-hook 'evil-normal-state-entry-hook  'zoo/highlight-normal-mode)
 (add-hook 'evil-normal-state-entry-hook  'zoo/highlight-clock-in)
 
+(add-hook 'evil-visual-state-entry-hook  'zoo/highlight-visual-mode)
+(add-hook 'evil-visual-state-entry-hook  'zoo/highlight-clock-in)
+
+(add-hook 'evil-replace-state-entry-hook  'zoo/highlight-replace-mode)
+(add-hook 'evil-replace-state-entry-hook  'zoo/highlight-clock-in)
 
 (global-set-key (kbd "<f7> e") 'evil-emacs-state)
 (global-set-key (kbd "<f7> n") 'evil-normal-state)
