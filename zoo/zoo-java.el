@@ -7,17 +7,22 @@
 
 (require 'flymake)
 
+(defvar zoo-checkstyle-program "checkstyle-drip")
+
 (defun zoo/flymake-java-checkstyle-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-with-folder-structure
-                     ; ^ Don't create a local file with the _flymake postfix
-                     ))
+                     'flymake-create-temp-with-folder-structure))
+                     ; ^ Don't create a local file with the _flymake postfix 
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list "checkstyle" (list "-c"
-                             "/usr/share/checkstyle/sun_checks.xml"
-                             local-file))))
+    
+
+    (list zoo-checkstyle-program (list local-file))
+    ;; (list "checkstyle" (list "-c"
+    ;;                          "/usr/share/checkstyle/sun_checks.xml"
+    ;;                          local-file))
+    ))
 
 (defvar zoo/flymake-java-checkstyle-err-pattern-no-column
   '("^\\(.+\\):\\([0-9]+\\): \\(.+\\)$" 1 2 nil 3))
@@ -40,19 +45,19 @@
              zoo/flymake-java-checkstyle-err-pattern-with-column))
 
   ;; Only allowing flymake mode when the binary we need is there
-  (if (executable-find "checkstyle")
+  (if (executable-find zoo-checkstyle-program)
       (progn
         (flymake-mode t))
-      (message "Not enabling flymake: checkstyle command not found")))
+    (message (format "Not enabling flymake: %s command not found"
+                     zoo-checkstyle-program))))
 
 ;; Add all the setup of flymake in a hook
 (defun zoo/java-mode-hook ()
   (interactive)
   (zoo/flymake-java-checkstyle-load)
   (defadvice flymake-post-syntax-check
-    (before flymake-force-check-was-interrupted)
-    (setq flymake-check-was-interrupted t))
-  (ad-activate 'flymake-post-syntax-check))
+    (before zoo-flymake-force-check-was-interrupted activate)
+    (setq flymake-check-was-interrupted t)))
 
 (add-hook 'java-mode-hook 'zoo/java-mode-hook)
 
