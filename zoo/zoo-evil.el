@@ -158,7 +158,7 @@
   (set-face-foreground 'modeline "black")
   (set-face-background 'modeline "#E6E5E4")
   (setq evil-visual-state-tag
-        (propertize " V "
+        (propertize " VISUAL "
                     'face
                     '(:background "#FF8700"
                       :foreground "#870000"
@@ -169,9 +169,20 @@
   (set-face-foreground 'modeline "black")
   (set-face-background 'modeline "#E6E5E4")
   (setq evil-replace-state-tag
-        (propertize " R "
+        (propertize " REPLACE "
                     'face
                     '(:background "#D70000"
+                      :foreground "white"
+                      'bold))))
+
+(defun zoo/highlight-motion-mode ()
+  (interactive)
+  (set-face-foreground 'modeline "black")
+  (set-face-background 'modeline "#E6E5E4")
+  (setq evil-motion-state-tag
+        (propertize " MOTION "
+                    'face
+                    '(:background "#14AACC"
                       :foreground "white"
                       'bold))))
 
@@ -189,6 +200,9 @@
 
 (add-hook 'evil-replace-state-entry-hook  'zoo/highlight-replace-mode)
 (add-hook 'evil-replace-state-entry-hook  'zoo/highlight-clock-in)
+
+(add-hook 'evil-motion-state-entry-hook  'zoo/highlight-motion-mode)
+(add-hook 'evil-motion-state-entry-hook  'zoo/highlight-clock-in)
 
 (global-set-key (kbd "<f7> e") 'evil-emacs-state)
 (global-set-key (kbd "<f7> n") 'evil-normal-state)
