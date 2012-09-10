@@ -92,7 +92,13 @@
          :type git
          :url "https://github.com/kazu-yamamoto/ghc-mod.git")
         
-        (:name bm :type http :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
+        (:name bm
+         :type http
+         :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
+        
+        (:name lineker
+         :type http
+         :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")        
         
         (:name color-theme-sunburst
          :type git
@@ -117,6 +123,8 @@
        winner-mode
        bm
        flymake-cursor
+       org-mode
+       lineker
 
        ; Lispy languages
        rainbow-mode

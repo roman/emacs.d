@@ -34,10 +34,10 @@
 
 (defun zoo/set-clojure-keybindings ()
   (interactive)
-  (define-key f4-map "-" 'dss/clojure-run-tests)
-  (define-key f4-map "c" 'dss/slime-repl-clear)
-  (define-key f4-map "p" 'dss/clojure-jump-to-project)
-  (define-key f4-map "j" 'dss/clojure-jump-between-tests-and-code))
+  (local-set-key (kbd "<f4> -") 'dss/clojure-run-tests)
+  (local-set-key (kbd "<f4> c") 'dss/slime-repl-clear)
+  (local-set-key (kbd "<f4> p") 'dss/clojure-jump-to-project)
+  (local-set-key (kbd "<f4> j") 'dss/clojure-jump-between-tests-and-code))
 
 (defun zoo/clojure-mode-hook ()
   (interactive)
