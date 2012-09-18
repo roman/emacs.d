@@ -6,7 +6,7 @@
 ;; with flymake is uber-slow, we recommend you use a nailgun
 ;; server to run the checkstyle API.
 
-(require 'flymake)
+(require 'zoo-flymake)
 
 (defun flymake-java-checkstyle-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy

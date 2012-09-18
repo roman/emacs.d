@@ -1,9 +1,10 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/el-get/ghc-mod/elisp"))
-(require 'ghc)
+(require 'zoo-flymake)
 (require 'zoo.path)
+(require 'ghc)
 
 ;; NOTE:
-;; Using zoo.path/rfind-file instead of  locate-dominating-file 
+;; Using `zoo.path/rfind-file` instead of `locate-dominating-file`
 ;; because the latter doesn't accept a regexp as the file name
 
 (defun zoo/is-cabal-dev-present? ()
@@ -23,11 +24,12 @@
 
 ;; Reset the haskell-mode-hook
 (setq haskell-mode-hook nil)
+
 (defun zoo/haskell-mode-hook ()
   (interactive)
+  (ghc-init)
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-simple-indent)
-  (ghc-init)
   (zoo/haskell-set-compile-command))
 
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
