@@ -1,7 +1,28 @@
+(require 'org)
+(require 'org-clock)
+(require 'org-remember)
+(require 'org-agenda)
+(require 'org-timer)
 (require 'zoo-keybinding)
+
 ;; Most of the settings are being ported from Tavis Rudd's org mode
 ;; configuration
 ;; https://github.com/tavisrudd/emacs.d
+
+;; org persist file
+(setq org-clock-persist-file
+      (concat zoo-ephemeral-dir ".org-clock-save.el"))
+
+(setq org-hide-leading-stars t)
+(setq org-show-following-heading t)
+(setq org-show-hierarchy-above t)
+
+;; ctrl-a/e will respect org-mode entries
+;; jump to the start of the headline
+(setq org-special-ctrl-a/e t)
+;; respect tags when killing line on a heading
+(setq org-special-ctrl-k t)
+(setq org-return-follows-link t)
 
 ;; Save the clock and entry when I close emacs
 (setq org-clock-persist t)
@@ -35,13 +56,22 @@
 ;; Resolve open-clocks if iddle more than 30 minutes
 (setq org-clock-idle-time 30)
 
+;; Activate single letter commands at the beginning of
+;; a headline
 (setq org-use-speed-commands t)
 
+;; when changing the item to DONE, Don't add anything
 (setq org-log-done nil)
+
+;; Add all notes and timestamps to the LOGBOOK drawer
 (setq org-log-into-drawer "LOGBOOK")
+
+;; When task is refilled, rescheduled or redeadline add
+;; a timestamp to the task
 (setq org-log-refile 'time)
 (setq org-log-reschedule 'time)
 (setq org-log-redeadline 'time)
+
 (setq org-log-note-headings
       '((done .  "CLOSING NOTE %t")
         (state . "State %-12s from %-12S %t")
@@ -55,11 +85,20 @@
 
 
 ;; Avoid adding a blank line after doing alt-return on an entry.
-(setq org-blank-before-new-entry '((heading) (plain-list-item)))
+(setq org-blank-before-new-entry '((heading . auto)
+                                   (plain-list-item . auto)))
 
 ;; When hitting alt-return on a header, please create a new one without
 ;; messing up the one I'm standing on.
 (setq org-insert-heading-respect-content t)
+
+(setq org-log-done nil)
+
+(setq org-log-into-drawer "LOGBOOK")
+
+(setq org-log-refile 'time)
+(setq org-log-reschedule 'time)
+(setq org-log-redeadline 'time)
 
 ;; Show me pretty colors on babel source code inside org.
 (setq org-src-fontify-natively t)
@@ -77,6 +116,36 @@
   '((sequence "TODO(t)" "TODAY(y!)" "|" "STARTED(s!)" "|" "PAUSED(p!)" "|" "DONE(d!/!)")
     (sequence "WAITING(w@/!)" "SOMEDAY(S!)" "OPEN(O@)" "|" "CANCELLED(c@/!)")))
 
+
+(defun zoo/org-clocking-p ()
+  (interactive)
+  (and (fboundp 'org-clocking-p)
+       (org-clocking-p)))
+
+
+(defun dss/org-current-timestamp ()
+  (let ((fmt (concat
+              "[" (substring (cdr org-time-stamp-formats) 1 -1) "]")))
+    (format-time-string fmt)))
+
+(defun dss/org-current-clock-id ()
+  "Get the id of the current item being clocked."
+  (save-window-excursion
+    (save-excursion
+      (org-clock-goto)
+      (org-id-get-create))))
+
+(defun dss/org-insert-heading-hook ()
+  (interactive)
+  ;; Create an ID for the current item
+  (org-id-get-create)
+  (org-set-property "ADDED" (dss/org-current-timestamp))
+  (if (zoo/org-clocking-p)
+      ;; ^ If a clock is active, add a reference to the task
+      ;; that is clocked in
+      (org-set-property "CLOCK-WHEN-ADDED" (dss/org-current-clock-id))))
+(add-hook 'org-insert-heading-hook 'dss/org-insert-heading-hook)
+
 ;; Ask for an estimated time of completeness when clocking
 ;; in for the first time
 (defun dss/org-mode-ask-effort ()
@@ -89,6 +158,10 @@
         (org-set-property "Effort" effort)))))
 (add-hook 'org-clock-in-prepare-hook 'dss/org-mode-ask-effort)
 
+(setq org-capture-templates
+      '(("s" "sub-heading to clocked-in heading" entry (clock) "* TODO %?\n %i\n %a")
+        ("k" "ckechbox to clocked-in heading" checkitem (clock) "- [ ] %A")))
+
 ;; When evaluating code in org, don't ask me!
 (defun dss/babel-no-confirm ()
   (interactive)
@@ -100,6 +173,8 @@
         ("today" . ?t)
         ("tomorrow" . ?m)
         ("next" . ?n)
+        ("learning" . ?l)
+        ("tweaking" . ?t)
         (:endgroup . nil)))
 
 ;; Pretty styling for the different keywords of a TODO item
@@ -118,10 +193,6 @@
       '((clojure . t)
         (emacs-lisp . t)))
 
-;; The f8 keybinding is going to be dedicated for org mode
-;; use only, that's why we define the keybindings for f8 in this
-;; module
-
 (defun dss/org-clock-in-select ()
   "C-u C-c C-x C-i -> org-clock-select-task"
   (interactive)
@@ -132,6 +203,9 @@
   (interactive)
   (org-clock-goto '(4)))
 
+;; The f8 keybinding is going to be dedicated for org mode
+;; use only, that's why we define the keybindings for f8 in this
+;; module
 (define-key f8-map "i" 'org-clock-in)
 (define-key f8-map "o" 'org-clock-out)
 (define-key f8-map "r" 'org-capture)
@@ -140,8 +214,7 @@
 (define-key f8-map "_" 'dss/org-clock-in-select)
 (define-key f8-map "'" 'dss/org-clock-goto-select-task)
 (define-key f8-map "t" 'org-set-tags-command)
+(define-key f8-map "." 'org-store-link)
 (define-key f8-map "/" 'org-tags-view)
-(define-key f8-map "." 'org-todo)
-
 
 (provide 'zoo-org)
