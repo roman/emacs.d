@@ -35,6 +35,7 @@
 (defun zoo/set-clojure-keybindings ()
   (interactive)
   (local-set-key (kbd "<f4> -") 'dss/clojure-run-tests)
+  (local-set-key (kbd "<f4> e") 'slime-eval-buffer)
   (local-set-key (kbd "<f4> c") 'dss/slime-repl-clear)
   (local-set-key (kbd "<f4> p") 'dss/clojure-jump-to-project)
   (local-set-key (kbd "<f4> j") 'dss/clojure-jump-between-tests-and-code))
