@@ -122,6 +122,7 @@
        window-numbering
        winner-mode
        bm
+       flymake-cursor
        org-mode
        lineker
 

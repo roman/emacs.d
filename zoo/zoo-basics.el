@@ -32,6 +32,9 @@
 (setq make-backup-files nil)
 (auto-save-mode 0)
 
+;; I want flymake to be really verbose
+(setq flymake-log-level 3)
+
 ;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
 
