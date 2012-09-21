@@ -125,6 +125,7 @@
        flymake-cursor
        org-mode
        lineker
+       goto-last-change
 
        ; Lispy languages
        rainbow-mode
