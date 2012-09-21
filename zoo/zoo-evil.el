@@ -174,6 +174,45 @@
   (after zoo-evil-mode-enable-in-buffers activate)
   (zoo/evil-refresh-mode-line))
 
+;;;;;
+
+(defun zoo/evil-roman-sitdown ()
+  (interactive)
+
+  (setq evil-default-state 'normal)
+  (evil-set-initial-state 'term-mode 'normal)
+  (evil-set-initial-state 'org-mode 'normal)
+
+  (dolist (buffer (buffer-list))
+    (when (not (let ((case-fold-search nil))
+                 (string-match "Minibuf" (buffer-name buffer))))
+      (with-current-buffer buffer
+        (cond
+         ((evil-emacs-state-p) (evil-normal-state)))))))
+
+(defun zoo/evil-tavis-sitdown ()
+  (interactive)
+
+  (setq evil-default-state 'emacs)
+  (evil-set-initial-state 'term-mode 'emacs)
+  (evil-set-initial-state 'org-mode 'emacs)
+
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      (cond
+       ((not (evil-emacs-state-p)) (evil-emacs-state))))))
+
+(defun tavis-jack-in ()
+  (interactive)
+  (zoo/evil-tavis-sitdown))
+
+(defun roman-jack-in ()
+  (interactive)
+  (zoo/evil-roman-sitdown))
+
+(global-set-key (kbd "<f7> t") 'tavis-jack-in)
+(global-set-key (kbd "<f7> r") 'roman-jack-in)
+
 (evil-mode 1)
 (global-surround-mode 1)
 
