@@ -129,11 +129,11 @@
 
 (add-hook 'clojure-mode-hook 'zoo/clojure-mode-hook)
 
-(define-clojure-indent
-  (entity 'defun)
-  (events 'defun)
-  (defdomain 'defun)
-  (create-'domain defun)
-  (properties 'defun))
+;; (define-clojure-indent
+;;   (entity 'defun)
+;;   (events 'defun)
+;;   (defdomain 'defun)
+;;   (create-'domain defun)
+;;   (properties 'defun))
 
 (provide 'zoo-clojure)

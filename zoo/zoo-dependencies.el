@@ -88,6 +88,14 @@
         (:name winner-mode
          :type emacswiki)
 
+        (:name helm
+         :type git
+         :url "https://github.com/emacs-helm/helm.git")
+
+        (:name haskell-mode
+         :type git
+         :url "https://github.com/haskell/haskell-mode.git")
+
         (:name ghc-mod
          :type git
          :url "https://github.com/kazu-yamamoto/ghc-mod.git")
@@ -126,6 +134,7 @@
        org-mode
        lineker
        goto-last-change
+       ; helm
 
        ; Lispy languages
        rainbow-mode
