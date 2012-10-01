@@ -12,7 +12,7 @@
 
 ; whitespace-mode should only show this properties
 (setq whitespace-style
-  '(tabs spaces trailing lines space-before-tab
+  '(face tabs spaces trailing lines space-before-tab
     newline empty space-after-tab
     space-mark tab-mark newline-mark))
 
