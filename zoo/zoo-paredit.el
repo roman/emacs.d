@@ -6,7 +6,8 @@
   (interactive)
   (paredit-mode 1))
 
-(evil-define-operator zoo/evil-paredit-delete (beg end type register yank-handler)
+(evil-define-operator zoo/evil-paredit-delete
+  (beg end type register yank-handler)
   "Delete text from BEG to END with TYPE respecting parenthesis.
 Save in REGISTER or in the kill-ring with YANK-HANDLER."
   (interactive "<R><x><y>")
@@ -19,7 +20,8 @@ Save in REGISTER or in the kill-ring with YANK-HANDLER."
              (eq type 'line))
     (evil-first-non-blank)))
 
-(evil-define-operator zoo/evil-paredit-delete-line (beg end type register yank-handler)
+(evil-define-operator zoo/evil-paredit-delete-line
+  (beg end type register yank-handler)
   "Delete to end of line respecting parenthesis."
   :motion nil
   :keep-visual t
@@ -46,7 +48,8 @@ Save in REGISTER or in the kill-ring with YANK-HANDLER."
      ((eq type 'line)
       (zoo/evil-paredit-delete beg end type register yank-handler))
      (t
-      (zoo/evil-paredit-delete beg (line-end-position) type register yank-handler)))))
+      (zoo/evil-paredit-delete beg (line-end-position)
+                               type register yank-handler)))))
 
 
 (evil-define-operator zoo/evil-paredit-change
@@ -70,7 +73,8 @@ of the block."
      (t
       (evil-insert 1)))))
 
-(evil-define-operator zoo/evil-paredit-change-line (beg end type register yank-handler)
+(evil-define-operator zoo/evil-paredit-change-line
+  (beg end type register yank-handler)
   "Change to end of line respecting parenthesis."
   :motion evil-end-of-line
   (interactive "<R><x><y>")
