@@ -1,9 +1,6 @@
 ; whitespace always on
 (global-whitespace-mode 1)
 
-; f5 should be whitespace-cleanup
-(global-set-key (kbd "<f5>") 'whitespace-cleanup)
-
 ; the tab-width is 4 by default
 (setq tab-width 4)
 
@@ -39,5 +36,12 @@
  '(whitespace-tab
    ((((class color) (background dark))
      (:background "#111" :foreground "#111")))))
+
+; f4 should be whitespace-cleanup
+(global-set-key (kbd "<f4> SPC") 'whitespace-cleanup)
+(define-key evil-normal-state-map
+  (kbd ", SPC") 'whitespace-cleanup)
+
+(add-hook after-save-hook 'whitespace-cleanup)
 
 (provide 'zoo-whitespace)
