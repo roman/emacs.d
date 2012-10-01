@@ -1,3 +1,4 @@
+(require 'uniquify)
 
 ;; Always show the matching parenthesis
 (show-paren-mode 1)
@@ -46,5 +47,8 @@
 (make-directory user-temporary-file-directory t)
 (setq backup-by-copying t)
 (setq backup-directory-alist `(("." . ,user-temporary-file-directory)))
+
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 (provide 'zoo-basics)
