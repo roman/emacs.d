@@ -42,6 +42,6 @@
 (define-key evil-normal-state-map
   (kbd ", SPC") 'whitespace-cleanup)
 
-(add-hook after-save-hook 'whitespace-cleanup)
+(add-hook 'after-save-hook 'whitespace-cleanup)
 
 (provide 'zoo-whitespace)
