@@ -1,4 +1,6 @@
+(require 'golden-ratio)
 (require 'uniquify)
+
 
 ;; Always show the matching parenthesis
 (show-paren-mode 1)
@@ -33,8 +35,8 @@
 (setq make-backup-files nil)
 (auto-save-mode 0)
 
-;; I want flymake to be really verbose
-(setq flymake-log-level 3)
+;; I want flymake to show me errors
+(setq flymake-log-level 1)
 
 ;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
@@ -48,7 +50,17 @@
 (setq backup-by-copying t)
 (setq backup-directory-alist `(("." . ,user-temporary-file-directory)))
 
+;; Give me a space on the right for line numbers
+(setq linum-format "%3d ")
+
+;; When having windows with repeated filenames, uniquify them
+;; by the folder they are in rather those annoying <2>,<3>,.. etc
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+; don't screw special buffers
+(setq uniquify-ignore-buffers-re "^\\*")
+
+;; Enable auto-resizing of windows with golden-ratio
+(golden-ratio-enable)
+
 
 (provide 'zoo-basics)
