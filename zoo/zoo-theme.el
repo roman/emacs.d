@@ -90,7 +90,9 @@
      (outline-2 ((t (:foreground "#5fffff"))))
      (outline-3 ((t (:foreground "#00afaf"))))
      (outline-4 ((t (:foreground "#0087ff"))))
-     (outline-5 ((t (:foreground "#0087af")))))))
+     (outline-5 ((t (:foreground "#0087af"))))
+     (linum     ((t (:foreground "#AAAAAA"
+                     :background "#333333")))))))
 
 (color-theme-zoo-sunburst)
 
