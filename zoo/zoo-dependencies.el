@@ -27,13 +27,13 @@
 
 (if (require 'package nil t)
   (package-initialize)
-    ;(progn
-    ;  ;; Emacs 24+ includes ELPA, but requires some extra setup
-    ;  ;; to use the (better) mermelade repo
-    ;  (package-initialize)
-    ;  (if (>= emacs-major-version 24)
-    ;      (add-to-list 'package-archives
-    ;                   '("marmalade" . "http://marmalade-repo.org/packages/") t)))
+    ;;(progn
+    ;;  ;; Emacs 24+ includes ELPA, but requires some extra setup
+    ;;  ;; to use the (better) mermelade repo
+    ;;  (package-initialize)
+    ;;  (if (>= emacs-major-version 24)
+    ;;      (add-to-list 'package-archives
+    ;;                   '("marmalade" . "http://marmalade-repo.org/packages/") t)))
   (install-elpa))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -89,12 +89,24 @@
          :type git
          :url "https://github.com/nschum/window-numbering.el.git")
 
+        (:name golden-ratio
+         :type git
+         :url "https://github.com/roman/golden-ratio.el.git")
+
         (:name winner-mode
          :type emacswiki)
 
         (:name helm
          :type git
          :url "https://github.com/emacs-helm/helm.git")
+
+        (:name yasnippet
+         :type git
+         :url "https://github.com/emacsmirror/yasnippet.git")
+
+        (:name helm-c-yasnippet
+         :type git
+         :url "https://github.com/emacs-helm/helm-c-yasnippet.git")
 
         (:name haskell-mode
          :type git
@@ -103,15 +115,23 @@
         (:name ghc-mod
          :type git
          :url "https://github.com/kazu-yamamoto/ghc-mod.git")
-        
+
         (:name bm
          :type http
          :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
-        
+
         (:name lineker
          :type http
-         :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")        
-        
+         :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")
+
+        (:name popup
+         :type git
+         :url "https://github.com/emacsmirror/popup.git")
+
+        (:name auto-complete
+         :type git
+         :url "https://github.com/emacsmirror/auto-complete.git")
+
         (:name color-theme-sunburst
          :type git
          :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
@@ -126,6 +146,7 @@
        package
        evil
        evil-surround
+       evil-paredit
        paredit
        magit
        multi-term
@@ -138,7 +159,13 @@
        org-mode
        lineker
        goto-last-change
-       ; helm
+       smex
+       golden-ratio
+       popup
+       auto-complete
+       ;;helm
+       ;;yasnippet
+       ;;helm-c-yasnippet
 
        ; Lispy languages
        rainbow-mode
