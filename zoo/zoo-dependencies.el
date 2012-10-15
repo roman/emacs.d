@@ -61,6 +61,10 @@
          :type git
          :url "https://github.com/eschulte/rinari.git")
 
+        (:name evil-paredit
+         :type git
+         :url "https://github.com/roman/evil-paredit.git")
+
         (:name flip-tables
          :type http
          :url "http://www.emacswiki.org/emacs/download/flip-tables.el")
