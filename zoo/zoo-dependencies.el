@@ -163,6 +163,7 @@
        golden-ratio
        popup
        auto-complete
+       moz-repl
        ;;helm
        ;;yasnippet
        ;;helm-c-yasnippet
