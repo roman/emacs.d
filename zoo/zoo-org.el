@@ -217,4 +217,42 @@
 (define-key f8-map "." 'org-store-link)
 (define-key f8-map "/" 'org-tags-view)
 
+;;;;;;;;;;;;;;;;;;;;
+;; Future release of evil-org
+
+(define-minor-mode evil-org-mode
+  "Minor mode for setting up Evil with org mode in a single buffer"
+  :keymap '())
+
+(defun evil-org-insert-heading ()
+  (interactive)
+  (end-of-line)
+  (cond
+   ((org-at-item-checkbox-p) (org-insert-item 'checkbox))
+   (t (org-insert-heading)))
+  (evil-insert-state))
+
+(defun evil-org-insert-subheading (arg)
+  (interactive "P")
+  (end-of-line)
+  (cond
+   ((org-at-item-checkbox-p)
+    (progn
+      (org-insert-item 'checkbox)
+      (org-indent-item)))
+   (t (org-insert-subheading arg)))
+  (evil-insert-state))
+
+(evil-define-key 'normal evil-org-mode-map
+  (kbd ")") 'outline-next-visible-heading
+  (kbd "(") 'outline-previous-visible-heading
+  (kbd "TAB") 'org-cycle
+  (kbd "gp") 'outline-up-heading
+  (kbd "M-o") 'zoo/org-insert-heading
+  (kbd "C-o") 'zoo/org-insert-subheading)
+
+;;;;;;;;;;;;;;;;;;;;
+
+(evil-org-mode 1)
+
 (provide 'zoo-org)
