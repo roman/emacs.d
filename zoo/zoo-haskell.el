@@ -79,24 +79,23 @@
   (interactive)
   (compile compile-command))
 
-(defun zoo/haskell-add-keybindings ()
-  (interactive)
-  (define-key haskell-mode-map
-    (kbd "<f4> b") 'zoo/haskell-compile) 
-  (define-key evil-normal-state-map
-    (kbd ",b") 'zoo/haskell-compile))
-
 (defun zoo/haskell-mode-hook ()
   (interactive)
   (turn-on-haskell-doc-mode)
-  ;; (turn-on-haskell-simple-indent)
+  (turn-on-haskell-simple-indent)
   (zoo/haskell-set-compile-command)
   (zoo/flymake-haskell-load)
-  (setq haskell-stylish-on-save t)
+
   (define-key haskell-mode-map
-               (kbd "C-x C-s")
-               'haskell-mode-save-buffer))
+    (kbd "C-x C-s")
+    'haskell-mode-save-buffer)
+  )
 
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
+
+(setq haskell-stylish-on-save t)
+
+(evil-define-key 'normal haskell-mode-map
+    (kbd ",b") 'zoo/haskell-compile)
 
 (provide 'zoo-haskell)
