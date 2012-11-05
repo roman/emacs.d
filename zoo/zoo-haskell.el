@@ -32,8 +32,9 @@
 (defun zoo/flymake-haskell-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                      'flymake-create-temp-with-folder-structure))
-         (local-file (file-relative-name temp-file
-                                         (file-name-directory buffer-file-name))))
+         (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
     (list "ghc-mod" (list zoo/ghc-mod-subcmd local-file))))
 
 (defun zoo/flymake-haskell-load ()
@@ -61,9 +62,12 @@
 ;; Using `zoo.path/rfind-file` instead of `locate-dominating-file`
 ;; because the latter doesn't accept a regexp as the file name
 (defun zoo/is-cabal-dev-present? ()
-  (let ((current-dir (zoo.path/pwd)))
-    (and (zoo.path/rfind-file "*.cabal" current-dir)
-         (zoo.path/rfind-file "cabal-dev" current-dir))))
+  (let* ((current-dir (zoo.path/pwd))
+         (cabal-dev-folder (zoo.path/rfind-dir "cabal-dev" current-dir))
+         (cabal-file-folder (zoo.path/rfind-dir "*.cabal" current-dir)))
+    (and (not (null cabal-dev-folder))
+         (not (null cabal-file-folder))
+         (string= cabal-dev-folder cabal-file-folder))))
 
 (defun zoo/haskell-set-compile-command ()
   (if (zoo/is-cabal-dev-present?)
@@ -78,6 +82,22 @@
 (defun zoo/haskell-compile ()
   (interactive)
   (compile compile-command))
+
+(defun zoo/set-haskell-ghci-program
+  (if (zoo/is-cabal-dev-present?)
+      (if (and (executable-find "screen")
+               (executable-find "cabal-dev-ghci"))
+          (progn
+            (setq haskell-ghci-program-name "screen")
+            (setq haskell-ghci-program-args (list "-s" "cabal-dev-ghci")))
+        (progn
+          (setq haskell-ghci-program-name "cabal-dev")
+          (setq haskell-ghci-program-args (list "ghci"))))))
+
+(defun zoo/haskell-add-extra-keybindings ()
+  (interactive)
+  (evil-define-key 'normal haskell-mode-map
+    (kbd ",b") 'zoo/haskell-compile))
 
 (defun zoo/haskell-mode-hook ()
   (interactive)

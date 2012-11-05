@@ -9,9 +9,9 @@
 
 ; whitespace-mode should only show this properties
 (setq whitespace-style
-  '(face tabs spaces trailing lines space-before-tab
-    newline empty space-after-tab
-    space-mark tab-mark newline-mark))
+      '(face tabs spaces trailing lines-tail space-before-tab
+             newline empty space-after-tab
+             space-mark tab-mark newline-mark))
 
 
 ; special characters for newline and tabs
