@@ -42,7 +42,7 @@
 
 (defun install-el-get ()
   (eval-url
-   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"))
+   "https://raw.github.com/dimitri/el-get/862dfe1025568b90c254dd91e054ea9bad5b319a/el-get-install.el"))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -57,6 +57,10 @@
 
 (setq el-get-generate-autoloads t
       el-get-sources '(
+        (:name sunrise-commander
+         :type git
+         :url "https://github.com/escherdragon/sunrise-commander.git")
+
         (:name rinari
          :type git
          :url "https://github.com/eschulte/rinari.git")
@@ -73,9 +77,13 @@
          :type git
          :url "https://github.com/emacsmirror/rainbow-mode.git")
 
+        (:name ac-nrepl
+         :type git
+         :url "https://github.com/purcell/ac-nrepl.git")
+
         (:name clojure-mode
          :type git
-         :url "https://github.com/technomancy/clojure-mode.git")
+         :url "https://github.com/tavisrudd/clojure-mode.git")
 
         (:name rainbow-delimiters
          :type git
@@ -175,6 +183,8 @@
        ; Clojure mode extensions
        clojure-mode
        swank-clojure
+       ;nrepl
+       ;ac-nrepl
 
        ;; Puppet mode extensions
        puppet-mode
@@ -199,11 +209,11 @@
        ; Color themes dependencies
        color-theme
        color-theme-sunburst
-       color-theme-almost-monokai
-       color-theme-railscasts
-       color-theme-solarized
+       ;;color-theme-almost-monokai
+       ;;color-theme-railscasts
+       ;;color-theme-solarized
        ))
 
-(el-get 'wait zoo-el-get-packages)
+(el-get 'sync zoo-el-get-packages)
 
 (provide 'zoo-dependencies)

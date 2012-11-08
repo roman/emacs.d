@@ -15,3 +15,4 @@ el-get
 elpa
 zoo/zoo-work.el
 swank/
+/ac-comphist.dat
