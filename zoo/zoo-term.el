@@ -6,6 +6,7 @@
   "Evil minor mode for multiterm"
   :keymap (make-sparse-keymap))
 
+(evil-set-initial-state 'term-mode 'emacs)
 (evil-define-key 'insert evil-term-mode-map
   (kbd "C-r") 'term-send-reverse-search-history)
 
