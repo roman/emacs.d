@@ -85,6 +85,10 @@
          :type git
          :url "https://github.com/tavisrudd/clojure-mode.git")
 
+        (:name cljsbuild-mode
+         :type git
+         :url "https://github.com/BirdseyeSoftware/cljsbuild-mode.git")
+
         (:name rainbow-delimiters
          :type git
          :url "https://github.com/jlr/rainbow-delimiters.git")
@@ -131,6 +135,10 @@
         (:name lineker
          :type http
          :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")
+
+        (:name multi-term
+         :type git
+         :url "https://github.com/roman/multi-term")
 
         (:name popup
          :type git
@@ -183,6 +191,7 @@
        ; Clojure mode extensions
        clojure-mode
        swank-clojure
+       cljsbuild-mode
        ;nrepl
        ;ac-nrepl
 
