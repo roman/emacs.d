@@ -65,6 +65,10 @@
          :type git
          :url "https://github.com/eschulte/rinari.git")
 
+        (:name autotest-mode
+         :type git
+         :url "https://github.com/BirdseyeSoftware/autotest-mode")
+
         (:name evil-paredit
          :type git
          :url "https://github.com/roman/evil-paredit.git")
@@ -180,9 +184,8 @@
        popup
        auto-complete
        moz-repl
-       ;;helm
-       ;;yasnippet
-       ;;helm-c-yasnippet
+       notify
+       autotest-mode
 
        ; Lispy languages
        rainbow-mode
@@ -192,8 +195,6 @@
        clojure-mode
        swank-clojure
        cljsbuild-mode
-       ;nrepl
-       ;ac-nrepl
 
        ;; Puppet mode extensions
        puppet-mode
@@ -202,7 +203,7 @@
        haskell-mode
        ghc-mod
 
-       ; Ruby mode extensions
+       ;; Ruby mode extensions
        ruby-mode
        ruby-compilation
        inf-ruby
@@ -211,15 +212,13 @@
        ruby-block
        ruby-end
 
-       ; Rails mode extensions
+       ;; Rails mode extensions
        rinari
        rspec-mode
 
-       ; Color themes dependencies
+       ;; Color themes dependencies
        color-theme
        color-theme-sunburst
-       ;;color-theme-almost-monokai
-       ;;color-theme-railscasts
        ;;color-theme-solarized
        ))
 
