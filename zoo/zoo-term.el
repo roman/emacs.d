@@ -1,3 +1,5 @@
+(require 'multi-term)
+(require 'multi-term-ext)
 ;;;;;;;;;;;;;;;;;;;;
 ;; Evil Extensions for terminal
 ;;;;;;;;;;;;;;;;;;;;
@@ -39,5 +41,9 @@
         (multi-term)
       (switch-to-buffer b))))
 
+(setq multi-term-ext-profiles
+      '(("ateam" . ((multi-term-ext-remote-host "roman@ateam")
+                    (multi-term-ext-screen-session-name "emacs")
+                    (multi-term-buffer-name "ateam")))))
 
 (provide 'zoo-term)
