@@ -140,9 +140,9 @@
          :type http
          :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")
 
-        (:name multi-term
+        (:name multi-term-ext
          :type git
-         :url "https://github.com/roman/multi-term")
+         :url "https://github.com/roman/multi-term-ext")
 
         (:name popup
          :type git
@@ -170,13 +170,14 @@
        paredit
        magit
        multi-term
+       multi-term-ext
        ack
        sunrise-commander
        window-numbering
        winner-mode
        bm
        flymake-cursor
-       org-mode
+       ;;org-mode
        lineker
        goto-last-change
        smex
