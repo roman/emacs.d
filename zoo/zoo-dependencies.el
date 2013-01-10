@@ -166,13 +166,13 @@
        paredit
        magit
        multi-term
+       multi-term-ext
        ack
        sunrise-commander
        window-numbering
        winner-mode
        bm
        flymake-cursor
-       org-mode
        lineker
        goto-last-change
        smex
@@ -180,9 +180,7 @@
        popup
        auto-complete
        moz-repl
-       ;;helm
-       ;;yasnippet
-       ;;helm-c-yasnippet
+       notify
 
        ; Lispy languages
        rainbow-mode
@@ -192,8 +190,6 @@
        clojure-mode
        swank-clojure
        cljsbuild-mode
-       ;nrepl
-       ;ac-nrepl
 
        ;; Puppet mode extensions
        puppet-mode
