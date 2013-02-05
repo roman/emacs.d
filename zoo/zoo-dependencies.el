@@ -73,6 +73,22 @@
          :type git
          :url "https://github.com/roman/evil-paredit.git")
 
+        (:name dash
+         :type git
+         :url "https://github.com/magnars/dash.el.git")
+
+        (:name edn.el
+         :type git
+         :url "https://github.com/BirdseyeSoftware/edn.el")
+
+        (:name s
+         :type git
+         :url "https://github.com/magnars/s.el.git")
+
+        (:name emacs-websocket
+         :type git
+         :url "https://github.com/ahyatt/emacs-websocket.git")
+
         (:name flip-tables
          :type http
          :url "http://www.emacswiki.org/emacs/download/flip-tables.el")
@@ -177,7 +193,7 @@
        winner-mode
        bm
        flymake-cursor
-       ;;org-mode
+       emacs-websocket
        lineker
        goto-last-change
        smex
@@ -187,6 +203,11 @@
        moz-repl
        notify
        autotest-mode
+
+       edn.el
+       dash
+       s
+
 
        ; Lispy languages
        rainbow-mode
