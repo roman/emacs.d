@@ -1,4 +1,5 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/zoo"))
+(setq notify-method 'notify-via-message)
 (require 'zoo-dependencies)
 (require 'zoo-basics)
 (require 'zoo-rainbow-delimiters)
@@ -15,5 +16,6 @@
 (require 'zoo-java)
 (require 'zoo-clojure)
 (require 'zoo-haskell)
+(require 'zoo-python)
 (require 'zoo-recentf-history-etc)
 (require 'dss-hook-management)
