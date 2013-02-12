@@ -1,19 +1,54 @@
 (require 'multi-term)
-;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Basic Settings for terminal behavior
+
+(setq comint-scroll-to-bottom-on-input t
+      comint-scroll-to-bottom-on-output nil
+      comint-scroll-show-maximum-output t)
+
+(setq shell-command-switch "-lc")
+
+(defun zoo/toggle-term-mode ()
+  (interactive)
+  (cond
+   ((term-in-line-mode)
+    (progn
+      (term-char-mode)
+      (evil-emacs-state)
+      (setq zoo/current-term-mode 'term-char-mode)
+      (comint-goto-process-mark)))
+   ((term-in-char-mode)
+    (progn
+      (term-line-mode)
+      (evil-normal-state)
+      (setq zoo/current-term-mode 'term-line-mode)))
+   (t
+    (progn
+      (message
+       (concat "Invalid value for `zoo/current-term-mode'"
+               ", setting it to 'term-char-mode'"))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil Extensions for terminal
-;;;;;;;;;;;;;;;;;;;;
 
 (define-minor-mode evil-term-mode
   "Evil minor mode for multiterm"
   :keymap (make-sparse-keymap))
 
 (evil-set-initial-state 'term-mode 'emacs)
-(evil-define-key 'insert evil-term-mode-map
-  (kbd "C-r") 'term-send-reverse-search-history)
+
+(evil-define-key 'normal 'evil-term-mode-map
+  (kbd "M-g") 'zoo/toggle-term-mode)
+
+(evil-define-key 'emacs evil-term-mode-map
+  (kbd "C-r") 'term-send-reverse-search-history
+  (kbd "<f1>") 'zoo/toggle-term-mode
+  (kbd "M-g") 'zoo/toggle-term-mode)
 
 (add-hook 'term-mode-hook 'evil-term-mode)
 
-;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; on shells, please handle properly the ansi escape codes
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
@@ -39,17 +74,5 @@
     (if (or (not b) (eq 'term-mode major-mode))
         (multi-term)
       (switch-to-buffer b))))
-
-;; (setq multi-term-ext-profiles
-;;       '(("gentoo" . ((multi-term-ext-remote-host "vagrant@127.0.0.1")
-;;                      (multi-term-ext-remote-ssh-port "2222")
-;;                      (multi-term-ext-screen-session-name "emacs")
-;;                      (multi-term-buffer-name "vagrant")))
-;;         ("ateam" . ((multi-term-ext-remote-host "roman@ateam")
-;;                     (multi-term-ext-screen-session-name "emacs")
-;;                     (multi-term-buffer-name "ateam")))
-;;         ("irb-local" . ((multi-term-program "/usr/bin/irb")
-;;                         (multi-term-buffer-name "irb-local")
-;;                         (multi-term-ext-screen-session-name "irb")))))
 
 (provide 'zoo-term)

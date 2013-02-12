@@ -82,6 +82,8 @@
         ;; ^ set it to empty if it is actually defined
         (setq zoo-mode-line-clock-in-tag ""))))
 
+;; (put 'modeline 'face-alias 'mode-line)
+
 (defmacro zoo/make-evil-highlight-mode (evil-mode
                                         modeline-foreground
                                         modeline-background
@@ -97,8 +99,10 @@
        ;; highlight for a evil-mode
        (defun ,function-name ()
          (interactive)
-         (set-face-foreground 'modeline ,modeline-foreground)
-         (set-face-background 'modeline ,modeline-background)
+         (if (boundp 'mode-line)
+	     (progn
+	       (set-face-foreground 'mode-line ,modeline-foreground)
+	       (set-face-background 'mode-line ,modeline-background)))
          (setq ,tag-var-name
                (propertize ,evil-tag-text
                            'face

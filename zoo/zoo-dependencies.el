@@ -51,6 +51,8 @@
 (unless (require 'el-get nil t)
   (install-el-get))
 
+
+
 ;;;;;;;;;;;;;;;;;;;;
 ;;  Adding Extra sources
 ;;;;;;;;;;;;;;;;;;;;
@@ -92,6 +94,22 @@
         (:name evil-paredit
          :type git
          :url "http://github.com/roman/evil-paredit.git")
+
+        (:name dash
+         :type git
+         :url "https://github.com/magnars/dash.el.git")
+
+        (:name edn.el
+         :type git
+         :url "https://github.com/BirdseyeSoftware/edn.el")
+
+        (:name s
+         :type git
+         :url "https://github.com/magnars/s.el.git")
+
+        (:name emacs-websocket
+         :type git
+         :url "https://github.com/ahyatt/emacs-websocket.git")
 
         (:name flip-tables
          :type http
@@ -194,6 +212,7 @@
        winner-mode
        bm
        flymake-cursor
+       emacs-websocket
        lineker
        goto-last-change
        smex
@@ -208,6 +227,11 @@
 
        coffee-mode
        coffeelintmode
+
+       edn.el
+       dash
+       s
+
 
        ; Lispy languages
        rainbow-mode
