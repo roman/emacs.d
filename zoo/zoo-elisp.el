@@ -127,6 +127,12 @@ Return non-nil if and only if skipping was done."
   (kbd ",ef") 'dss/eval-defun
   (kbd ",rt") 'ert)
 
+(evil-define-key 'normal lisp-interaction-mode-map
+  (kbd ",eb") 'eval-buffer
+  (kbd ",el") 'eval-last-sexp
+  (kbd ",ef") 'dss/eval-defun
+  (kbd ",rt") 'ert)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun zoo/emacs-lisp-mode-hook ()

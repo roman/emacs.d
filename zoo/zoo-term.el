@@ -1,5 +1,4 @@
 (require 'multi-term)
-(require 'multi-term-ext)
 ;;;;;;;;;;;;;;;;;;;;
 ;; Evil Extensions for terminal
 ;;;;;;;;;;;;;;;;;;;;
@@ -41,9 +40,16 @@
         (multi-term)
       (switch-to-buffer b))))
 
-(setq multi-term-ext-profiles
-      '(("ateam" . ((multi-term-ext-remote-host "roman@ateam")
-                    (multi-term-ext-screen-session-name "emacs")
-                    (multi-term-buffer-name "ateam")))))
+;; (setq multi-term-ext-profiles
+;;       '(("gentoo" . ((multi-term-ext-remote-host "vagrant@127.0.0.1")
+;;                      (multi-term-ext-remote-ssh-port "2222")
+;;                      (multi-term-ext-screen-session-name "emacs")
+;;                      (multi-term-buffer-name "vagrant")))
+;;         ("ateam" . ((multi-term-ext-remote-host "roman@ateam")
+;;                     (multi-term-ext-screen-session-name "emacs")
+;;                     (multi-term-buffer-name "ateam")))
+;;         ("irb-local" . ((multi-term-program "/usr/bin/irb")
+;;                         (multi-term-buffer-name "irb-local")
+;;                         (multi-term-ext-screen-session-name "irb")))))
 
 (provide 'zoo-term)

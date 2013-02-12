@@ -59,6 +59,8 @@
 ; don't screw special buffers
 (setq uniquify-ignore-buffers-re "^\\*")
 
+(setq notify-delay '(0 0 0))
+
 ;; Enable auto-resizing of windows with golden-ratio
 (golden-ratio-enable)
 

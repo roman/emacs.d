@@ -1,5 +1,6 @@
 ;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/el-get/ghc-mod/elisp"))
 (require 'evil)
+(require 'proctor-mode)
 (require 'zoo-flymake)
 (require 'zoo.path)
 
@@ -108,8 +109,7 @@
 
   (define-key haskell-mode-map
     (kbd "C-x C-s")
-    'haskell-mode-save-buffer)
-  )
+    'haskell-mode-save-buffer))
 
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
 

@@ -42,7 +42,7 @@
 
 (defun install-el-get ()
   (eval-url
-   "https://raw.github.com/dimitri/el-get/862dfe1025568b90c254dd91e054ea9bad5b319a/el-get-install.el"))
+   "http://raw.github.com/dimitri/el-get/862dfe1025568b90c254dd91e054ea9bad5b319a/el-get-install.el"))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -59,19 +59,39 @@
       el-get-sources '(
         (:name sunrise-commander
          :type git
-         :url "https://github.com/escherdragon/sunrise-commander.git")
+         :url "http://github.com/escherdragon/sunrise-commander.git")
+
+        (:name navorski.el
+         :type git
+         :url "roman@ateam:/var/repos/navorski.el.git")
+
+        (:name s
+         :type git
+         :url "http://github.com/magnars/s.el.git")
+
+        (:name dash
+         :type git
+         :url "http://github.com/magnars/dash.el.git")
+
+        (:name coffee-mode
+         :type git
+         :url "http://github.com/defunkt/coffee-mode.git")
+
+        (:name coffeelintmode
+         :type git
+         :url "http://github.com/ajkavanagh/coffeelintnode.git")
 
         (:name rinari
          :type git
-         :url "https://github.com/eschulte/rinari.git")
+         :url "http://github.com/eschulte/rinari.git")
 
-        (:name autotest-mode
+        (:name proctor-mode
          :type git
-         :url "https://github.com/BirdseyeSoftware/autotest-mode")
+         :url "roman@ateam:/var/repos/proctor-mode.git")
 
         (:name evil-paredit
          :type git
-         :url "https://github.com/roman/evil-paredit.git")
+         :url "http://github.com/roman/evil-paredit.git")
 
         (:name flip-tables
          :type http
@@ -79,58 +99,58 @@
 
         (:name rainbow-mode
          :type git
-         :url "https://github.com/emacsmirror/rainbow-mode.git")
+         :url "http://github.com/emacsmirror/rainbow-mode.git")
 
         (:name ac-nrepl
          :type git
-         :url "https://github.com/purcell/ac-nrepl.git")
+         :url "http://github.com/purcell/ac-nrepl.git")
 
         (:name clojure-mode
          :type git
-         :url "https://github.com/tavisrudd/clojure-mode.git")
+         :url "http://github.com/tavisrudd/clojure-mode.git")
 
         (:name cljsbuild-mode
          :type git
-         :url "https://github.com/BirdseyeSoftware/cljsbuild-mode.git")
+         :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
 
         (:name rainbow-delimiters
          :type git
-         :url "https://github.com/jlr/rainbow-delimiters.git")
+         :url "http://github.com/jlr/rainbow-delimiters.git")
 
         (:name evil-surround
          :type git
-         :url "https://github.com/timcharper/evil-surround.git")
+         :url "http://github.com/timcharper/evil-surround.git")
 
         (:name window-numbering
          :type git
-         :url "https://github.com/nschum/window-numbering.el.git")
+         :url "http://github.com/nschum/window-numbering.el.git")
 
         (:name golden-ratio
          :type git
-         :url "https://github.com/roman/golden-ratio.el.git")
+         :url "http://github.com/roman/golden-ratio.el.git")
 
         (:name winner-mode
          :type emacswiki)
 
         (:name helm
          :type git
-         :url "https://github.com/emacs-helm/helm.git")
+         :url "http://github.com/emacs-helm/helm.git")
 
         (:name yasnippet
          :type git
-         :url "https://github.com/emacsmirror/yasnippet.git")
+         :url "http://github.com/emacsmirror/yasnippet.git")
 
         (:name helm-c-yasnippet
          :type git
-         :url "https://github.com/emacs-helm/helm-c-yasnippet.git")
+         :url "http://github.com/emacs-helm/helm-c-yasnippet.git")
 
         (:name haskell-mode
          :type git
-         :url "https://github.com/haskell/haskell-mode.git")
+         :url "http://github.com/haskell/haskell-mode.git")
 
         (:name ghc-mod
          :type git
-         :url "https://github.com/kazu-yamamoto/ghc-mod.git")
+         :url "http://github.com/kazu-yamamoto/ghc-mod.git")
 
         (:name bm
          :type http
@@ -140,21 +160,17 @@
          :type http
          :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")
 
-        (:name multi-term-ext
-         :type git
-         :url "https://github.com/roman/multi-term-ext")
-
         (:name popup
          :type git
-         :url "https://github.com/emacsmirror/popup.git")
+         :url "http://github.com/emacsmirror/popup.git")
 
         (:name auto-complete
          :type git
-         :url "https://github.com/emacsmirror/auto-complete.git")
+         :url "http://github.com/emacsmirror/auto-complete.git")
 
         (:name color-theme-sunburst
          :type git
-         :url "https://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
+         :url "http://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;;- Setting my dependencies
@@ -164,13 +180,14 @@
       '(
        ; OH MEIN GOT! I can't live without dependencies
        package
+       s
+       dash
        evil
        evil-surround
        evil-paredit
        paredit
        magit
        multi-term
-       multi-term-ext
        ack
        sunrise-commander
        window-numbering
@@ -185,7 +202,12 @@
        auto-complete
        moz-repl
        notify
-       autotest-mode
+
+       navorski.el
+       proctor-mode
+
+       coffee-mode
+       coffeelintmode
 
        ; Lispy languages
        rainbow-mode
