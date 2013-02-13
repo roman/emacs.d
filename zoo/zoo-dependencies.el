@@ -127,9 +127,13 @@
          :type git
          :url "http://github.com/tavisrudd/clojure-mode.git")
 
-        (:name cljsbuild-mode
+        ;; (:name cljsbuild-mode
+        ;;  :type git
+        ;;  :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
+
+        (:name sisyphus-mode
          :type git
-         :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
+         :url "roman@ateam:/var/repos/sisyphus-mode.git")
 
         (:name rainbow-delimiters
          :type git
@@ -240,7 +244,8 @@
        ; Clojure mode extensions
        clojure-mode
        swank-clojure
-       cljsbuild-mode
+       sisyphus-mode
+       ;;cljsbuild-mode
 
        ;; Puppet mode extensions
        puppet-mode
