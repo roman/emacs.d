@@ -53,7 +53,7 @@
         ;; (ropemacs-mode t)
         )))
 
-(add-hook 'python-mode-hook dss/python-mode-hook)
+(add-hook 'python-mode-hook 'dss/python-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
