@@ -65,7 +65,7 @@
 
         (:name navorski.el
          :type git
-         :url  "ssh://git@bitbucket:romanandreg/navorski.el.git")
+         :url  "ssh://git@bitbucket.org/romanandreg/navorski.el.git")
 
         (:name s
          :type git
@@ -89,7 +89,7 @@
 
         (:name proctor-mode
          :type git
-         :url "ssh://git@bitbucket:romanandreg/proctor-mode.git")
+         :url "ssh://git@bitbucket.org/romanandreg/proctor-mode.git")
 
         (:name evil-paredit
          :type git
@@ -209,6 +209,7 @@
        evil-paredit
        paredit
        magit
+       dvc
        multi-term
        ack
        sunrise-commander

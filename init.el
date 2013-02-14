@@ -18,4 +18,5 @@
 (require 'zoo-haskell)
 (require 'zoo-python)
 (require 'zoo-recentf-history-etc)
+(require 'zoo-find)
 (require 'dss-hook-management)

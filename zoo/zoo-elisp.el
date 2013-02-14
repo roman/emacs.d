@@ -16,7 +16,6 @@
 (defun dss/in-comment-p ()
   (dss/in-syntax-p 'comment))
 
-
 (defun dss/blank-line-p ()
   "Return non-nil iff current line is blank."
   (save-excursion
@@ -72,6 +71,7 @@ can be used from any coding major mode"
           (unless (looking-at "\\s-*$")
             (indent-according-to-mode))
           (forward-line))))))
+
 (defun dss/indent-defun ()
   (interactive)
   (save-excursion
@@ -119,18 +119,34 @@ Return non-nil if and only if skipping was done."
                (eval-last-sexp nil)
                (smex-update))))))
 
+(defun zoo/eval-para (&optional eval-fn)
+  "Select current paragraph and eval the region."
+  (interactive)
+  (save-excursion
+    (mark-paragraph)
+    (let ((beg (region-beginning))
+          (end (region-end))
+          (eval-fn (or eval-fn 'eval-region)))
+      (funcall eval-fn beg end)
+      (deactivate-mark)
+      (dss/flash-region beg end))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (evil-define-key 'normal emacs-lisp-mode-map
   (kbd ",eb") 'eval-buffer
   (kbd ",el") 'eval-last-sexp
   (kbd ",ef") 'dss/eval-defun
+  (kbd ",er") 'eval-region
+  (kbd ",ep") 'zoo/eval-para
   (kbd ",rt") 'ert)
 
 (evil-define-key 'normal lisp-interaction-mode-map
   (kbd ",eb") 'eval-buffer
   (kbd ",el") 'eval-last-sexp
   (kbd ",ef") 'dss/eval-defun
+  (kbd ",er") 'eval-region
+  (kbd ",ep") 'zoo/eval-para
   (kbd ",rt") 'ert)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
