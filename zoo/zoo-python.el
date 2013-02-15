@@ -39,6 +39,27 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+(setq virtual-env (getenv "VIRTUAL_ENV"))
+(defvar dss-ropemacs-loaded nil)
+(defun dss/ropemacs-init ()
+  (interactive)
+  (unless dss-ropemacs-loaded
+    (if (not (equal virtual-env nil))
+        (setq load-path (append
+                         (list (concat virtual-env "/src/pymacs" ))
+                         load-path)))
+    (require 'pymacs)
+    (if (not (boundp 'ropemacs-global-prefix))
+        (setq ropemacs-global-prefix nil))
+    (pymacs-load "ropemacs" "rope-")
+    (setq ropemacs-enable-autoimport nil)
+    (define-key ropemacs-local-keymap (kbd "M-/") nil)
+    (setq dss-ropemacs-loaded t)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun dss/python-mode-hook ()
   (interactive)
   ;; (which-function-mode t)
