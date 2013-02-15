@@ -38,12 +38,16 @@
 ;;;;;;;;;;;;;;
 ;; Normal Mode
 ;;;;;;;;;;;;;;
+
 ;;
 ;; Undo visualize tree on ",u" when on normal mode
-(define-key evil-normal-state-map (kbd ",u") #'undo-tree-visualize)
+(evil-define-key 'normal global-state-map
+  (kbd ",u") #'undo-tree-visualize)
+
 ;; Find defined symbols using ,. in normal mode instead of M-. in
 ;; insert mode
-(define-key evil-normal-state-map (kbd ",.") 'find-tag)
+;; (evil-define-key 'normal evil-normal-state-map
+;;   (kbd ",.") 'find-tag)
 
 ;;;;;;;;;;;;;;;;;
 ;; Custom highlights for insert and normal mode
@@ -100,15 +104,15 @@
        (defun ,function-name ()
          (interactive)
          (if (boundp 'mode-line)
-	     (progn
-	       (set-face-foreground 'mode-line ,modeline-foreground)
-	       (set-face-background 'mode-line ,modeline-background)))
+             (progn
+               (set-face-foreground 'mode-line ,modeline-foreground)
+               (set-face-background 'mode-line ,modeline-background)))
          (setq ,tag-var-name
                (propertize ,evil-tag-text
                            'face
                            '(:background ,evil-tag-background
                              :foreground ,evil-tag-foreground
-                           'bold))))
+                             'bold))))
        ;; Call the function for the simple initialization
        (,function-name)
        ;; Add a hook for the mode entry
