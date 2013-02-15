@@ -65,7 +65,7 @@
 
         (:name navorski.el
          :type git
-         :url "roman@ateam:/var/repos/navorski.el.git")
+         :url  "ssh://git@bitbucket:romanandreg/navorski.el.git")
 
         (:name s
          :type git
@@ -89,7 +89,7 @@
 
         (:name proctor-mode
          :type git
-         :url "roman@ateam:/var/repos/proctor-mode.git")
+         :url "ssh://git@bitbucket:romanandreg/proctor-mode.git")
 
         (:name evil-paredit
          :type git
@@ -246,8 +246,8 @@
        ; Clojure mode extensions
        clojure-mode
        swank-clojure
-       sisyphus-mode
-       ;;cljsbuild-mode
+       ;; sisyphus-mode
+       ;; cljsbuild-mode
 
        ;; Puppet mode extensions
        puppet-mode
