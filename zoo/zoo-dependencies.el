@@ -225,6 +225,7 @@
        auto-complete
        moz-repl
        notify
+       iedit
 
        navorski.el
        proctor-mode
@@ -236,6 +237,7 @@
        dash
        s
 
+       ;;pymacs
 
        ; Lispy languages
        rainbow-mode
