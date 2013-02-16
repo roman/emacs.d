@@ -88,7 +88,7 @@
   (interactive)
   (compile compile-command))
 
-(defun zoo/haskell-complete-type-decl ()
+(defun zoo/haskell-add-type-decl ()
   (interactive)
   (save-excursion
     (condition-case nil
@@ -120,11 +120,12 @@
 
 (evil-define-key 'normal haskell-mode-map
   (kbd ",b")  'zoo/haskell-compile
-  (kbd ",ct") 'zoo/haskell-complete-type-decl
+  (kbd ",at") 'zoo/haskell-add-type-decl
   (kbd ",gi") 'switch-to-haskell
+  (kbd ",fl") 'inferior-haskell-load-file
+  (kbd ",fr") 'inferior-haskell-reload-file
   (kbd ",ef") 'inferior-haskell-send-decl
-  (kbd ",i.")  'inferior-haskell-find-definition
-  (kbd ",if") 'inferior-haskell-load-file
+  (kbd ",.")  'inferior-haskell-find-definition
   (kbd ",ii") 'inferior-haskell-info
   (kbd ",it") 'inferior-haskell-type)
 
