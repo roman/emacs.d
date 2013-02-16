@@ -4,9 +4,13 @@
 (require 'zoo-flymake)
 (require 'zoo.path)
 
+
+(setq haskell-stylish-on-save t)
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; Flymake with ghc-mod
 ;;;;;;;;;;;;;;;;;;;;
+(setq haskell-stylish-on-save t)
 ;;
 ;; NOTE:
 ;;
@@ -84,38 +88,44 @@
   (interactive)
   (compile compile-command))
 
-(defun zoo/set-haskell-ghci-program
-  (if (zoo/is-cabal-dev-present?)
-      (if (and (executable-find "screen")
-               (executable-find "cabal-dev-ghci"))
-          (progn
-            (setq haskell-ghci-program-name "screen")
-            (setq haskell-ghci-program-args (list "-s" "cabal-dev-ghci")))
-        (progn
-          (setq haskell-ghci-program-name "cabal-dev")
-          (setq haskell-ghci-program-args (list "ghci"))))))
-
-(defun zoo/haskell-add-extra-keybindings ()
+(defun dss/haskell-insert-type-decl ()
   (interactive)
-  (evil-define-key 'normal haskell-mode-map
-    (kbd ",b") 'zoo/haskell-compile))
+  (save-excursion
+    (condition-case nil
+        (progn
+          (beginning-of-line)
+          (let ((typ (inferior-haskell-get-result
+                      (concat ":type " (haskell-ident-at-point)))))
+            (insert typ)
+            (insert "\n")))
+      (error
+       (message "error inserting type")))))
 
 (defun zoo/haskell-mode-hook ()
   (interactive)
+
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-simple-indent)
   (zoo/haskell-set-compile-command)
-  (zoo/flymake-haskell-load)
-
-  (define-key haskell-mode-map
-    (kbd "C-x C-s")
-    'haskell-mode-save-buffer))
+  (zoo/flymake-haskell-load))
 
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
 
-(setq haskell-stylish-on-save t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Keybindings
+
+(define-key haskell-mode-map
+    (kbd "C-x C-s")
+    'save-buffer)
 
 (evil-define-key 'normal haskell-mode-map
-    (kbd ",b") 'zoo/haskell-compile)
+  (kbd ",b")  'zoo/haskell-compile
+  (kbd ",ct") 'dss/haskell-insert-type-decl
+  (kbd ",gi") 'switch-to-haskell
+  (kbd ",ef") 'inferior-haskell-send-decl
+  (kbd ",i.")  'inferior-haskell-find-definition
+  (kbd ",if") 'inferior-haskell-load-file
+  (kbd ",ii") 'inferior-haskell-info
+  (kbd ",it") 'inferior-haskell-type)
 
 (provide 'zoo-haskell)
