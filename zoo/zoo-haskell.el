@@ -88,7 +88,7 @@
   (interactive)
   (compile compile-command))
 
-(defun dss/haskell-insert-type-decl ()
+(defun zoo/haskell-complete-type-decl ()
   (interactive)
   (save-excursion
     (condition-case nil
@@ -120,7 +120,7 @@
 
 (evil-define-key 'normal haskell-mode-map
   (kbd ",b")  'zoo/haskell-compile
-  (kbd ",ct") 'dss/haskell-insert-type-decl
+  (kbd ",ct") 'zoo/haskell-complete-type-decl
   (kbd ",gi") 'switch-to-haskell
   (kbd ",ef") 'inferior-haskell-send-decl
   (kbd ",i.")  'inferior-haskell-find-definition
