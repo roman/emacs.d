@@ -17,6 +17,12 @@
                               ".*\\.el"
                               ".*\\.elc"))
 
+(defun zoo/find-elisp ()
+  (interactive)
+  (find/ido-search-file "~/.emacs.d/"
+                              ".*\\.el"
+                              ".*\\.elc"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun zoo/occur-this ()
@@ -33,6 +39,7 @@
 
 (evil-define-key 'normal global-map
   (kbd ",f0") 'zoo/find-zoo-elisp
+  (kbd ",f9") 'zoo/find-elisp
   (kbd "<f4>o") 'zoo/occur-this)
 
 (provide 'zoo-find)
