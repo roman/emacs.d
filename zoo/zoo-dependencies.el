@@ -91,6 +91,10 @@
          :type git
          :url "ssh://git@bitbucket.org/romanandreg/proctor-mode.git")
 
+        (:name tracker.el
+         :type git
+         :url "http://github.com/BirdseyeSoftware/tracker.el.git")
+
         (:name evil-paredit
          :type git
          :url "http://github.com/roman/evil-paredit.git")
@@ -202,6 +206,7 @@
       '(
        ; OH MEIN GOT! I can't live without dependencies
        package
+       tracker.el
        s
        dash
        evil
@@ -209,7 +214,7 @@
        evil-paredit
        paredit
        magit
-       dvc
+       ;; dvc
        multi-term
        ack
        sunrise-commander

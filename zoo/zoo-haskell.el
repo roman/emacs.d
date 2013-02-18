@@ -114,9 +114,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Keybindings
 
-(define-key haskell-mode-map
-    (kbd "C-x C-s")
-    'save-buffer)
+;; (define-key haskell-mode-map
+;;     (kbd "C-x C-s")
+;;     'save-buffer)
 
 (evil-define-key 'normal haskell-mode-map
   (kbd ",b")  'zoo/haskell-compile
