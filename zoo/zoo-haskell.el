@@ -118,10 +118,19 @@
 ;;     (kbd "C-x C-s")
 ;;     'save-buffer)
 
+(defun zoo/switch-to-haskell ()
+  (interactive)
+  (let ((buffer (get-buffer "*haskell*")))
+    (when (and buffer
+             (y-or-n-p "Do you want to reload ghci? "))
+      (process-kill-without-query (get-buffer-process buffer))
+      (kill-buffer buffer)))
+  (switch-to-haskell))
+
 (evil-define-key 'normal haskell-mode-map
   (kbd ",b")  'zoo/haskell-compile
   (kbd ",at") 'zoo/haskell-add-type-decl
-  (kbd ",gi") 'switch-to-haskell
+  (kbd ",gi") 'zoo/switch-to-haskell
   (kbd ",fl") 'inferior-haskell-load-file
   (kbd ",fr") 'inferior-haskell-reload-file
   (kbd ",ef") 'inferior-haskell-send-decl
