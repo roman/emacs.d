@@ -1,8 +1,9 @@
-;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/el-get/ghc-mod/elisp"))
 (require 'evil)
 (require 'proctor-mode)
 (require 'zoo-flymake)
 (require 'zoo.path)
+(require 'proctor-mode)
+(require 'haskell-mode)
 
 
 (setq haskell-stylish-on-save t)
@@ -66,6 +67,11 @@
 ;; NOTE:
 ;; Using `zoo.path/rfind-file` instead of `locate-dominating-file`
 ;; because the latter doesn't accept a regexp as the file name
+(defun zoo/haskell-cabal-dev-dir ()
+  (interactive)
+  (let ((current-dir (zoo.path/pwd)))
+    (zoo.path/rfind-dir "cabal-dev" current-dir)))
+
 (defun zoo/is-cabal-dev-present? ()
   (let* ((current-dir (zoo.path/pwd))
          (cabal-dev-folder (zoo.path/rfind-dir "cabal-dev" current-dir))
@@ -86,7 +92,11 @@
 
 (defun zoo/haskell-compile ()
   (interactive)
-  (compile compile-command))
+  (let ((haskell-programn-name "cabal-dev ghci")
+        (compile-command "cabal-dev build")
+        (default-directory (zoo.path/rfind-dir "*.cabal"
+                                               (zoo.path/pwd))))
+    (compile compile-command)))
 
 (defun zoo/haskell-add-type-decl ()
   (interactive)
@@ -101,31 +111,39 @@
       (error
        (message "error inserting type")))))
 
+(defun zoo/haskell-cabal-dev-configure ()
+  (interactive)
+  (proctor/begin-notification 'birdseye-hs "Configuring cabal")
+  (call-process-shell-command
+   "cabal-dev configure" nil 0))
+
 (defun zoo/haskell-mode-hook ()
   (interactive)
-
   (turn-on-haskell-doc-mode)
-  (turn-on-haskell-simple-indent)
-  (zoo/haskell-set-compile-command)
+  (turn-on-haskell-indent)
   (zoo/flymake-haskell-load))
 
+(defun zoo/haskell-cabal-mode-hook ()
+  (add-hook 'after-save-hook
+            'zoo/haskell-cabal-dev-configure t t))
+
 (add-hook 'haskell-mode-hook 'zoo/haskell-mode-hook)
+(add-hook 'haskell-cabal-mode-hook 'zoo/haskell-cabal-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Keybindings
-
-;; (define-key haskell-mode-map
-;;     (kbd "C-x C-s")
-;;     'save-buffer)
 
 (defun zoo/switch-to-haskell ()
   (interactive)
   (let ((buffer (get-buffer "*haskell*")))
     (when (and buffer
-             (y-or-n-p "Do you want to reload ghci? "))
+               (y-or-n-p "Do you want to reload ghci? "))
       (process-kill-without-query (get-buffer-process buffer))
       (kill-buffer buffer)))
   (switch-to-haskell))
+
+(define-key haskell-mode-map
+  (kbd "C-x C-s") 'save-buffer)
 
 (evil-define-key 'normal haskell-mode-map
   (kbd ",b")  'zoo/haskell-compile
