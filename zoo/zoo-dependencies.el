@@ -59,33 +59,20 @@
 
 (setq el-get-generate-autoloads t
       el-get-sources '(
-        (:name sunrise-commander
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name golden-ratio
          :type git
-         :url "http://github.com/escherdragon/sunrise-commander.git")
+         :url "http://github.com/roman/golden-ratio.el.git")
 
         (:name navorski.el
          :type git
          :url  "ssh://git@bitbucket.org/romanandreg/navorski.el.git")
 
-        (:name s
+       (:name birdseye
          :type git
-         :url "http://github.com/magnars/s.el.git")
-
-        (:name dash
-         :type git
-         :url "http://github.com/magnars/dash.el.git")
-
-        (:name coffee-mode
-         :type git
-         :url "http://github.com/defunkt/coffee-mode.git")
-
-        (:name coffeelintmode
-         :type git
-         :url "http://github.com/ajkavanagh/coffeelintnode.git")
-
-        (:name rinari
-         :type git
-         :url "http://github.com/eschulte/rinari.git")
+         :url "ssh://git@bitbucket.org/romanandreg/birdseye.el.git")
 
         (:name proctor-mode
          :type git
@@ -99,49 +86,90 @@
          :type git
          :url "http://github.com/roman/evil-paredit.git")
 
-        (:name dash
-         :type git
-         :url "https://github.com/magnars/dash.el.git")
-
         (:name edn.el
          :type git
          :url "https://github.com/BirdseyeSoftware/edn.el")
 
-        (:name s
+        (:name sisyphus-mode
          :type git
-         :url "https://github.com/magnars/s.el.git")
-
-        (:name emacs-websocket
-         :type git
-         :url "https://github.com/ahyatt/emacs-websocket.git")
-
-        (:name flip-tables
-         :type http
-         :url "http://www.emacswiki.org/emacs/download/flip-tables.el")
-
-        (:name rainbow-mode
-         :type git
-         :url "http://github.com/emacsmirror/rainbow-mode.git")
-
-        (:name ac-nrepl
-         :type git
-         :url "http://github.com/purcell/ac-nrepl.git")
-
-        (:name clojure-mode
-         :type git
-         :url "http://github.com/tavisrudd/clojure-mode.git")
+         :url "ssh://git@bitbucket.org/romanandreg/sisyphus-mode.git")
 
         ;; (:name cljsbuild-mode
         ;;  :type git
         ;;  :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
 
-        (:name sisyphus-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name s
          :type git
-         :url "roman@ateam:/var/repos/sisyphus-mode.git")
+         :url "http://github.com/magnars/s.el.git")
+
+        (:name dash
+         :type git
+         :url "http://github.com/magnars/dash.el.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name coffee-mode
+         :type git
+         :url "http://github.com/defunkt/coffee-mode.git")
+
+        (:name coffeelintmode
+         :type git
+         :url "http://github.com/ajkavanagh/coffeelintnode.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name rinari
+         :type git
+         :url "http://github.com/eschulte/rinari.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name ac-nrepl
+         :type git
+         :url "http://github.com/purcell/ac-nrepl.git")
+
+        ;; (:name clojure-mode
+        ;;  :type git
+        ;;  :url "http://github.com/tavisrudd/clojure-mode.git")
+
+        (:name clojure-mode
+         :type git
+         :url "https://github.com/technomancy/clojure-mode.git")
 
         (:name rainbow-delimiters
          :type git
          :url "http://github.com/jlr/rainbow-delimiters.git")
+
+        (:name nrepl.el
+         :type git
+         :url "https://github.com/kingtim/nrepl.el.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+        (:name haskell-mode
+         :type git
+         :url "http://github.com/haskell/haskell-mode.git")
+
+        (:name ghc-mod
+         :type git
+         :url "http://github.com/kazu-yamamoto/ghc-mod.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name sunrise-commander
+         :type git
+         :url "http://github.com/escherdragon/sunrise-commander.git")
+
+        (:name emacs-websocket
+         :type git
+         :url "https://github.com/ahyatt/emacs-websocket.git")
+
+        (:name rainbow-mode
+         :type git
+         :url "http://github.com/emacsmirror/rainbow-mode.git")
 
         (:name evil-surround
          :type git
@@ -150,10 +178,6 @@
         (:name window-numbering
          :type git
          :url "http://github.com/nschum/window-numbering.el.git")
-
-        (:name golden-ratio
-         :type git
-         :url "http://github.com/roman/golden-ratio.el.git")
 
         (:name winner-mode
          :type emacswiki)
@@ -169,14 +193,6 @@
         (:name helm-c-yasnippet
          :type git
          :url "http://github.com/emacs-helm/helm-c-yasnippet.git")
-
-        (:name haskell-mode
-         :type git
-         :url "http://github.com/haskell/haskell-mode.git")
-
-        (:name ghc-mod
-         :type git
-         :url "http://github.com/kazu-yamamoto/ghc-mod.git")
 
         (:name bm
          :type http
@@ -206,16 +222,26 @@
       '(
        ; OH MEIN GOT! I can't live without dependencies
        package
-       tracker.el
+       birdseye
+
        s
        dash
+
        evil
        evil-surround
        evil-paredit
+
+       multi-term
+       navorski.el
+       proctor-mode
+
+       coffee-mode
+       coffeelintmode
+
+
+       tracker.el
        paredit
        magit
-       ;; dvc
-       multi-term
        ack
        sunrise-commander
        window-numbering
@@ -232,37 +258,26 @@
        moz-repl
        notify
        iedit
-
-       navorski.el
-       proctor-mode
-
-       coffee-mode
-       coffeelintmode
-
-       edn.el
-       dash
-       s
-
-       ;;pymacs
-
-       ; Lispy languages
        rainbow-mode
-       rainbow-delimiters
 
-       ; Clojure mode extensions
+
+       ;; Clojure
        clojure-mode
-       swank-clojure
-       ;; sisyphus-mode
-       ;; cljsbuild-mode
+       rainbow-delimiters
+       edn.el
+       ;; swank-clojure
+       sisyphus-mode
+       nrepl.el
 
-       ;; Puppet mode extensions
+
+       ;; Puppet
        puppet-mode
 
-       ; Haskell mode extensions
+       ; Haskell
        haskell-mode
        ghc-mod
 
-       ;; Ruby mode extensions
+       ;; Ruby
        ruby-mode
        ruby-compilation
        inf-ruby
@@ -271,15 +286,13 @@
        ruby-block
        ruby-end
 
-       ;; Rails mode extensions
+       ;; Rails
        rinari
        rspec-mode
 
-       ;; Color themes dependencies
+       ;; Color Themes
        color-theme
-       color-theme-sunburst
-       ;;color-theme-solarized
-       ))
+       color-theme-sunburst))
 
 (el-get 'sync zoo-el-get-packages)
 

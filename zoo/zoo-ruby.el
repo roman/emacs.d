@@ -6,6 +6,15 @@
                             (set (make-local-variable 'tab-width) 2)))
 (add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on)
 
+(defun zoo/ruby-mode-hook ()
+  ;;(make-local-variable 'tags-table-list)
+  (setq tags-table-list
+        (split-string  (shell-command-to-string
+                        (format "ls %s"
+                                (concat (getenv "GEM_HOME")
+                                        "/gems/*/tags")))
+                       "\n")))
 
+(add-hook 'ruby-mode-hook 'zoo/ruby-mode-hook)
 
 (provide 'zoo-ruby)
