@@ -220,79 +220,79 @@
 
 (setq zoo-el-get-packages
       '(
-       ; OH MEIN GOT! I can't live without dependencies
-       package
-       birdseye
+                                        ; OH MEIN GOT! I can't live without dependencies
+        package
+        birdseye
 
-       s
-       dash
+        s
+        dash
 
-       evil
-       evil-surround
-       evil-paredit
+        evil
+        evil-surround
+        evil-paredit
 
-       multi-term
-       navorski.el
-       proctor-mode
+        multi-term
+        navorski.el
+        proctor-mode
 
-       coffee-mode
-       coffeelintmode
+        coffee-mode
+        coffeelintmode
 
-
-       tracker.el
-       paredit
-       magit
-       ack
-       sunrise-commander
-       window-numbering
-       winner-mode
-       bm
-       flymake-cursor
-       emacs-websocket
-       lineker
-       goto-last-change
-       smex
-       golden-ratio
-       popup
-       auto-complete
-       moz-repl
-       notify
-       iedit
-       rainbow-mode
-
-
-       ;; Clojure
-       clojure-mode
-       rainbow-delimiters
-       edn.el
-       ;; swank-clojure
-       sisyphus-mode
-       nrepl.el
+        tracker.el
+        paredit
+        hlinum
+        magit
+        ack
+        sunrise-commander
+        window-numbering
+        winner-mode
+        bm
+        flymake-cursor
+        emacs-websocket
+        lineker
+        goto-last-change
+        smex
+        golden-ratio
+        popup
+        auto-complete
+        moz-repl
+        notify
+        iedit
+        rainbow-mode
 
 
-       ;; Puppet
-       puppet-mode
+        ;; Clojure
+        clojure-mode
+        rainbow-delimiters
+        edn.el
+        ;; swank-clojure
+        sisyphus-mode
+        nrepl.el
 
-       ; Haskell
-       haskell-mode
-       ghc-mod
 
-       ;; Ruby
-       ruby-mode
-       ruby-compilation
-       inf-ruby
-       ri
-       flymake-ruby
-       ruby-block
-       ruby-end
+        ;; Puppet
+        puppet-mode
 
-       ;; Rails
-       rinari
-       rspec-mode
+        ;; Haskell
+        haskell-mode
+        ghc-mod
 
-       ;; Color Themes
-       color-theme
-       color-theme-sunburst))
+        ;; Ruby
+        ruby-mode
+        ruby-compilation
+        inf-ruby
+        ri
+        flymake-ruby
+        ruby-block
+        ruby-end
+
+        ;; Rails
+        rinari
+        rspec-mode
+
+        ;; Color Themes
+        color-theme
+        color-theme-sunburst))
 
 (el-get 'sync zoo-el-get-packages)
 
