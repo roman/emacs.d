@@ -62,6 +62,13 @@
 (setq notify-delay '(0 0 0))
 
 ;; Enable auto-resizing of windows with golden-ratio
+
+(setq golden-ratio-extra-commands
+      (append golden-ratio-extra-commands
+              '(evil-window-left
+                evil-window-right
+                evil-window-up
+                evil-window-down)))
 (golden-ratio-mode)
 
 
