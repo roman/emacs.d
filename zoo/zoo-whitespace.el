@@ -11,7 +11,6 @@
         spaces
         trailing
         newline
-        tab-mark
         ;; newline-mark
         empty
         space-before-tab
