@@ -1,5 +1,6 @@
-(add-to-list 'load-path (expand-file-name "~/Projects/birdseye/pulse/integration/emacs"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/zoo"))
+(add-to-list 'load-path (expand-file-name "~/maestro/"))
+(add-to-list 'load-path (expand-file-name "~/maestro/integration/emacs"))
 
 (setq notify-method 'notify-via-message)
 (require 'zoo-dependencies)
@@ -23,5 +24,6 @@
 (require 'dss-hook-management)
 
 (require 'birdseye)
-;; (require 'pulse)
-;; (pulse/start)
+
+(require 'maestro)
+(require 'maestro.dev)
