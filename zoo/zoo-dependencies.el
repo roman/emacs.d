@@ -108,6 +108,24 @@
          :type git
          :url "http://github.com/magnars/dash.el.git")
 
+        (:name git-gutter
+         :type git
+         :url "https://github.com/syohex/emacs-git-gutter.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name scss-mode
+         :type git
+         :url "https://github.com/antonj/scss-mode.git")
+
+        (:name less-css-mode
+         :type git
+         :url "https://github.com/purcell/less-css-mode.git")
+
+        (:name flymake-less
+         :type git
+         :url "https://github.com/purcell/flymake-less.git")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
         (:name coffee-mode
@@ -125,6 +143,10 @@
          :url "http://github.com/eschulte/rinari.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        (:name flymake-easy
+         :type git
+         :url "https://github.com/purcell/flymake-easy.git" )
 
         (:name ac-nrepl
          :type git
@@ -222,6 +244,7 @@
       '(
                                         ; OH MEIN GOT! I can't live without dependencies
         package
+        flymake-easy
         birdseye
 
         s
@@ -234,6 +257,12 @@
         multi-term
         navorski.el
         proctor-mode
+
+        scss-mode
+        less-css-mode
+        flymake-less
+
+        git-gutter
 
         coffee-mode
         coffeelintmode
