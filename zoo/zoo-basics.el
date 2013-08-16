@@ -1,3 +1,4 @@
+(require 'em-glob)
 (require 'golden-ratio)
 (require 'uniquify)
 
@@ -68,7 +69,12 @@
               '(evil-window-left
                 evil-window-right
                 evil-window-up
-                evil-window-down)))
+                evil-window-down
+                select-window-1
+                select-window-2
+                select-window-3
+                select-window-4
+                select-window-5)))
 (golden-ratio-mode)
 
 
