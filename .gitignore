@@ -2,6 +2,7 @@
 ~*
 \#*
 .#*
+.cask
 tramp
 bookmarks
 history
@@ -16,3 +17,8 @@ elpa
 zoo/zoo-work.el
 swank/
 /ac-comphist.dat
+/.org-id-locations
+/.tracker.log
+/projectile-bookmarks.eld
+/projectile.cache
+/.mc-lists.el
