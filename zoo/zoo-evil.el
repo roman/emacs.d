@@ -171,9 +171,6 @@
 (add-hook 'org-clock-out-hook  'zoo/highlight-org-clock)
 (add-hook 'org-clock-out-hook  'zoo/evil-refresh-mode-line)
 
-(global-set-key (kbd "<f7> e") 'evil-emacs-state)
-(global-set-key (kbd "<f7> n") 'evil-normal-state)
-
 (defadvice evil-refresh-mode-line
   (before zoo-evil-refresh-mode-line activate)
   (zoo/evil-refresh-mode-line))
@@ -181,6 +178,9 @@
 (defadvice evil-mode-enable-in-buffers
   (after zoo-evil-mode-enable-in-buffers activate)
   (zoo/evil-refresh-mode-line))
+
+(global-set-key (kbd "<f7> e") 'evil-emacs-state)
+(global-set-key (kbd "<f7> n") 'evil-normal-state)
 
 ;;;;;
 
