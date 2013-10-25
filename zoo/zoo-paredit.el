@@ -32,8 +32,8 @@
   (kbd ",<")  'paredit-backward-slurp-sexp
   (kbd ";>")  'paredit-backward-barf-sexp
   (kbd ";<")  'paredit-forward-barf-sexp
-  (kbd ",s")  'paredit-split-sexp
-  (kbd ",j")  'paredit-join-sexps
+  ;; (kbd ",xs")  'paredit-split-sexp
+  ;; (kbd ",xj")  'paredit-join-sexps
   (kbd ",ks") 'paredit-splice-sexp
   (kbd ",kf") 'paredit-splice-sexp-killing-forward
   (kbd ",kb") 'paredit-splice-sexp-killing-backward
