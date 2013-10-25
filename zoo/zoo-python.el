@@ -2,17 +2,17 @@
 
 (setq pycodechecker "pylint_etc_wrapper.py")
 
-(when (load "flymake" t)
-  (load-library "flymake-cursor")
-  (defun dss/flymake-pycodecheck-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list pycodechecker (list local-file))))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" dss/flymake-pycodecheck-init)))
+;; (when (load "flymake" t)
+;;   (load-library "flymake-cursor")
+;;   (defun dss/flymake-pycodecheck-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-inplace))
+;;            (local-file (file-relative-name
+;;                         temp-file
+;;                         (file-name-directory buffer-file-name))))
+;;       (list pycodechecker (list local-file))))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                '("\\.py\\'" dss/flymake-pycodecheck-init)))
 
 ;; And here are two little helpers for quickly silencing a warning message:
 
