@@ -4,6 +4,11 @@
 ; * http://github.com/tavisrudd/emacs.d
 ; * http://bytes.inso.cc/2011/08/13/auto-installing-packages-in-emacs-with-elpa-and-el-get/
 
+
+;; cask
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
 ; Utility function derived from ELPA installation
 ; +info: http://tromey.com/elpa/install.html
 ;
@@ -26,14 +31,14 @@
 (add-to-list 'load-path "~/.emacs.d/elpa")
 
 (if (require 'package nil t)
-  (package-initialize)
-    ;;(progn
-    ;;  ;; Emacs 24+ includes ELPA, but requires some extra setup
-    ;;  ;; to use the (better) mermelade repo
-    ;;  (package-initialize)
-    ;;  (if (>= emacs-major-version 24)
-    ;;      (add-to-list 'package-archives
-    ;;                   '("marmalade" . "http://marmalade-repo.org/packages/") t)))
+    (package-initialize)
+  (progn
+    ;; Emacs 24+ includes ELPA, but requires some extra setup
+    ;; to use the (better) mermelade repo
+    (package-initialize)
+    (if (>= emacs-major-version 24)
+        (add-to-list 'package-archives
+                     '("marmalade" . "http://marmalade-repo.org/packages/") t)))
   (install-elpa))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -94,6 +99,14 @@
          :type git
          :url "ssh://git@bitbucket.org/romanandreg/sisyphus-mode.git")
 
+        (:name projectile
+         :type git
+         :url "https://github.com/bbatsov/projectile.git")
+
+        (:name ace-jump-mode
+         :type git
+         :url "https://github.com/winterTTr/ace-jump-mode.git")
+
         ;; (:name cljsbuild-mode
         ;;  :type git
         ;;  :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
@@ -126,9 +139,6 @@
          :type git
          :url "https://github.com/purcell/less-css-mode.git")
 
-        (:name flymake-less
-         :type git
-         :url "https://github.com/purcell/flymake-less.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -148,9 +158,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-        (:name flymake-easy
-         :type git
-         :url "https://github.com/purcell/flymake-easy.git" )
+
 
         (:name ac-nrepl
          :type git
@@ -254,11 +262,7 @@
 
         (:name auto-complete
          :type git
-         :url "http://github.com/emacsmirror/auto-complete.git")
-
-        (:name color-theme-sunburst
-         :type git
-         :url "http://github.com/roman/Emacs-Sunburst-Color-Theme.git")))
+         :url "http://github.com/emacsmirror/auto-complete.git")))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;;- Setting my dependencies
@@ -268,7 +272,6 @@
       '(
                                         ; OH MEIN GOT! I can't live without dependencies
         package
-        flymake-easy
         birdseye
 
         s
@@ -285,7 +288,6 @@
 
         scss-mode
         less-css-mode
-        flymake-less
 
         git-gutter
 
@@ -301,7 +303,6 @@
         window-numbering
         winner-mode
         bm
-        flymake-cursor
         emacs-websocket
         lineker
         goto-last-change
@@ -318,6 +319,8 @@
         pkg-info
         epl
         helm
+        projectile
+        ace-jump-mode
 
 
         ;; Clojure
@@ -340,7 +343,6 @@
         ruby-compilation
         inf-ruby
         ri
-        flymake-ruby
         ruby-block
         ruby-end
 
@@ -350,7 +352,7 @@
 
         ;; Color Themes
         color-theme
-        color-theme-sunburst))
+        ))
 
 (el-get 'sync zoo-el-get-packages)
 
