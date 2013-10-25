@@ -104,6 +104,10 @@
          :type git
          :url "http://github.com/magnars/s.el.git")
 
+        (:name f
+         :type git
+         :url "https://github.com/rejeep/f.el.git")
+
         (:name dash
          :type git
          :url "http://github.com/magnars/dash.el.git")
@@ -181,6 +185,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+        (:name pkg-info
+         :type git
+         :url "https://github.com/lunaryorn/pkg-info.el.git")
+
+        (:name epl
+         :type git
+         :url "https://github.com/cask/epl.git")
+
         (:name sunrise-commander
          :type git
          :url "http://github.com/escherdragon/sunrise-commander.git")
@@ -220,6 +232,18 @@
          :type http
          :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
 
+        (:name solarized-emacs
+         :type git
+         :url "https://github.com/bbatsov/solarized-emacs.git")
+
+        (:name flycheck
+         :type git
+         :url "https://github.com/flycheck/flycheck.git")
+
+        (:name flycheck-color-mode-line
+         :type git
+         :url "https://github.com/flycheck/flycheck-color-mode-line.git")
+
         (:name lineker
          :type http
          :url "http://www.helsinki.fi/~sjpaavol/programs/lineker.el")
@@ -249,6 +273,7 @@
 
         s
         dash
+        f
 
         evil
         evil-surround
@@ -288,6 +313,11 @@
         notify
         iedit
         rainbow-mode
+        flycheck
+        flycheck-color-mode-line
+        pkg-info
+        epl
+        helm
 
 
         ;; Clojure
@@ -297,7 +327,6 @@
         ;; swank-clojure
         sisyphus-mode
         nrepl.el
-
 
         ;; Puppet
         puppet-mode

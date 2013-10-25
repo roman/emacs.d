@@ -8,7 +8,7 @@
 (setq whitespace-style
       '(face
         tabs
-        spaces
+        ;; spaces
         trailing
         newline
         ;; newline-mark
@@ -16,27 +16,27 @@
         space-before-tab
         space-after-tab))
 
-;; special characters for newline and tabs
-(setq whitespace-display-mappings
-      '(
-        (newline-mark 10 [194 172 10])
-        (tab-mark 9 [226 150 184 9])
-        ))
+;; ;; special characters for newline and tabs
+;; (setq whitespace-display-mappings
+;;       '(
+;;         (newline-mark 10 [194 172 10])
+;;         (tab-mark 9 [226 150 184 9])
+;;         ))
 
-;; special colors for newline and tab character
-(custom-set-faces
- '(whitespace-space
-   ((((class color) (background dark))
-     (:background "#111" :foreground "white"))
-    (((class color) (background light))
-     (:background "yellow" :foreground "black"))
-    (t (:inverse-video t))))
- '(whitespace-newline
-   ((((class color) (background dark))
-     (:background "#111" :foreground "#111"))))
- '(whitespace-tab
-   ((((class color) (background dark))
-     (:background "#111" :foreground "#111")))))
+;; ;; special colors for newline and tab character
+;; (custom-set-faces
+;;  '(whitespace-space
+;;    ((((class color) (background dark))
+;;      (:background "#111" :foreground "white"))
+;;     (((class color) (background light))
+;;      (:background "yellow" :foreground "black"))
+;;     (t (:inverse-video t))))
+;;  '(whitespace-newline
+;;    ((((class color) (background dark))
+;;      (:background "#111" :foreground "#111"))))
+;;  '(whitespace-tab
+;;    ((((class color) (background dark))
+;;      (:background "#111" :foreground "#111")))))
 
 ;; f4 should be whitespace-cleanup
 (global-set-key (kbd "<f4> SPC") 'whitespace-cleanup)
