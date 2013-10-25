@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: let
+# condition: (zoo/next-sexp-on-line?)
+# key: let
+# key: l
+# --
+(let [$1]
+  $0`(paredit-forward-slurp-sexp)`)

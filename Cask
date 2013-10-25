@@ -24,4 +24,3 @@
 (depends-on "cl-lib")
 (depends-on "smex")
 (depends-on "wrap-region")
-(depends-on "yasnippet")

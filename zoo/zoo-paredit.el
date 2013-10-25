@@ -6,28 +6,18 @@
   (paredit-mode 1)
   (evil-paredit-mode 1))
 
-(define-skeleton dss/elisp-let-skeleton
-    "A simple e-lisp let skeleton"
-      nil
-        "(let ((" @ - "))" \n >
-          @ _ ")")
-
-(setq dss-let-skeleton-func 'dss/elisp-let-skeleton)
-
-(defun zoo/evil-paredit-build-let ()
+(defun zoo/next-sexp-on-line? ()
   (interactive)
-  (cond
-   ((looking-back "[[:alnum:]-]") nil)
-   ((and (not (dss/in-string-p))
-         (looking-at-p "\("))
-    (progn
-      (if (not mark-active) (mark-sexp))
-      (funcall dss-let-skeleton-func)
-      (evil-insert-state)))))
-
+  (condition-case nil
+      (or
+       (save-excursion
+         (evil-find-char 1 ?\()
+         t)
+       (looking-at "\("))
+    (error
+     nil)))
 
 (evil-define-key 'normal paredit-mode-map
-  (kbd ",l")  'zoo/evil-paredit-build-let
   (kbd ",>")  'paredit-forward-slurp-sexp
   (kbd ",<")  'paredit-backward-slurp-sexp
   (kbd ";>")  'paredit-backward-barf-sexp
@@ -40,5 +30,14 @@
   (kbd ",ku") 'paredit-raise-sexp
   (kbd "(")   'paredit-backward
   (kbd ")")   'paredit-forward)
+
+(defun zoo/next-sexp-on-line? ()
+  (interactive)
+  (condition-case nil
+      (save-excursion
+        (evil-find-char 1 ?\()
+        t)
+    (error
+     nil)))
 
 (provide 'zoo-paredit)

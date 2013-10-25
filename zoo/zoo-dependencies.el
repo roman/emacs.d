@@ -230,7 +230,7 @@
 
         (:name yasnippet
          :type git
-         :url "http://github.com/emacsmirror/yasnippet.git")
+         :url "https://github.com/capitaomorte/yasnippet.git")
 
         (:name helm-c-yasnippet
          :type git
@@ -321,6 +321,7 @@
         helm
         projectile
         ace-jump-mode
+        yasnippet
 
 
         ;; Clojure
@@ -351,8 +352,7 @@
         rspec-mode
 
         ;; Color Themes
-        color-theme
-        ))
+        color-theme))
 
 (el-get 'sync zoo-el-get-packages)
 
