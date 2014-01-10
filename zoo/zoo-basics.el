@@ -1,7 +1,13 @@
 (require 'em-glob)
 (require 'golden-ratio)
 (require 'uniquify)
-
+(require 'iedit)
+(require 'auto-complete)
+(require 'navorski)
+(require 'lineker)
+(require 'anzu)
+(require 'ace-jump-mode)
+(global-anzu-mode)
 
 ;; Always show the matching parenthesis
 (show-paren-mode 1)
