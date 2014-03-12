@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(magit-item-highlight ((t nil))))
 
-;; (load-theme 'wombat)
-(load-theme 'zenburn t)
+(load-theme 'wombat)
+;; (load-theme 'zenburn t)
 
 (provide 'zoo-theme)
