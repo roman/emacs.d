@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic Settings for terminal behavior
 
+(setq system-uses-terminfo nil)
 (setq comint-scroll-to-bottom-on-input t
       comint-scroll-to-bottom-on-output nil
       comint-scroll-show-maximum-output t)
