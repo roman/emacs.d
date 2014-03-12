@@ -1,17 +1,16 @@
-; This dependencies module is inspired on Tavis Rudd's emacs.d, and
-; Sebastian Cevey blogpost, both of these can be found at:
-;
-; * http://github.com/tavisrudd/emacs.d
-; * http://bytes.inso.cc/2011/08/13/auto-installing-packages-in-emacs-with-elpa-and-el-get/
+;; This dependencies module is inspired on Tavis Rudd's emacs.d, and
+;; Sebastian Cevey blogpost, both of these can be found at:
+;;
+;; * http://github.com/tavisrudd/emacs.d
+;; * http://bytes.inso.cc/2011/08/13/auto-installing-packages-in-emacs-with-elpa-and-el-get/
 
-
-;; cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
-; Utility function derived from ELPA installation
-; +info: http://tromey.com/elpa/install.html
-;
+;; Utility function derived from ELPA installation
+;; +info: http://tromey.com/elpa/install.html
+;;
+
 (defun eval-url (url)
   (let ((buffer (url-retrieve-synchronously url)))
     (save-excursion
@@ -51,8 +50,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-; Ensure installation of el-get, if not there automatically
-; install it
+;; Ensure installation of el-get, if not there automatically
+;; install it
 (unless (require 'el-get nil t)
   (install-el-get))
 
@@ -75,7 +74,7 @@
          :type git
          :url  "ssh://git@bitbucket.org/romanandreg/navorski.el.git")
 
-       (:name birdseye
+        (:name birdseye
          :type git
          :url "ssh://git@bitbucket.org/romanandreg/birdseye.el.git")
 
@@ -107,9 +106,9 @@
          :type git
          :url "https://github.com/winterTTr/ace-jump-mode.git")
 
-        ;; (:name cljsbuild-mode
-        ;;  :type git
-        ;;  :url "http://github.com/BirdseyeSoftware/cljsbuild-mode.git")
+        (:name anzu
+         :type git
+         :url "https://github.com/syohex/emacs-anzu.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -163,10 +162,6 @@
         (:name ac-nrepl
          :type git
          :url "http://github.com/purcell/ac-nrepl.git")
-
-        ;; (:name clojure-mode
-        ;;  :type git
-        ;;  :url "http://github.com/tavisrudd/clojure-mode.git")
 
         (:name clojure-mode
          :type git
@@ -240,9 +235,9 @@
          :type http
          :url "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
 
-        (:name solarized-emacs
-         :type git
-         :url "https://github.com/bbatsov/solarized-emacs.git")
+        ;; (:name solarized-emacs
+        ;;  :type git
+        ;;  :url "https://github.com/bbatsov/solarized-emacs.git")
 
         (:name flycheck
          :type git
@@ -294,6 +289,7 @@
         coffee-mode
         coffeelintmode
 
+	anzu
         tracker.el
         paredit
         hlinum

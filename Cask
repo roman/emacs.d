@@ -3,18 +3,15 @@
 (source marmalade)
 
 (depends-on "cask")
-
 (depends-on "zenburn-theme")
+(depends-on "color-theme-solarized")
 (depends-on "anzu")
 (depends-on "golden-ratio")
 (depends-on "flycheck")
-
 (depends-on "dash")
 (depends-on "s")
 (depends-on "f")
-
 (depends-on "web-mode")
-
 (depends-on "drag-stuff")
 (depends-on "expand-region")
 (depends-on "magit")
@@ -23,4 +20,5 @@
 (depends-on "projectile")
 (depends-on "cl-lib")
 (depends-on "smex")
+(depends-on "projectile")
 (depends-on "wrap-region")
