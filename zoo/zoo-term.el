@@ -1,6 +1,13 @@
 (require 'multi-term)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; NOTE
+;; if on Mac OS X with emacs from brew, do this to avoid
+;; funny characters on the terminal
+;; => tic -o ~/.terminfo /usr/local/Cellar/emacs/<emacs-version>/share/emacs/<emacs-version>/etc/e/eterm-color.ti
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Basic Settings for terminal behavior
 
 (setq system-uses-terminfo nil)
