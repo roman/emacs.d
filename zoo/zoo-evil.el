@@ -103,10 +103,9 @@
        ;; highlight for a evil-mode
        (defun ,function-name ()
          (interactive)
-         (if (boundp 'mode-line)
-             (progn
-               (set-face-foreground 'mode-line ,modeline-foreground)
-               (set-face-background 'mode-line ,modeline-background)))
+         (progn
+           (set-face-foreground 'mode-line ,modeline-foreground)
+           (set-face-background 'mode-line ,modeline-background))
          (setq ,tag-var-name
                (propertize ,evil-tag-text
                            'face
