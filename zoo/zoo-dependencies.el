@@ -255,6 +255,10 @@
          :type git
          :url "http://github.com/emacsmirror/popup.git")
 
+	(:name magit
+	 :type git
+	 :url "https://github.com/magit/magit.git")
+
         (:name auto-complete
          :type git
          :url "http://github.com/emacsmirror/auto-complete.git")))
