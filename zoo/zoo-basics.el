@@ -7,6 +7,9 @@
 (require 'lineker)
 (require 'anzu)
 (require 'ace-jump-mode)
+(require 'sbt-mode)
+(require 'scala-mode2)
+
 (global-anzu-mode)
 
 ;; Always show the matching parenthesis

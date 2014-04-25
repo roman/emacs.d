@@ -129,6 +129,15 @@
          :url "https://github.com/syohex/emacs-git-gutter.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        (:name scala-mode2
+         :type git
+         :url "https://github.com/hvesalai/scala-mode2.git")
+
+        (:name sbt-mode
+         :type git
+         :url "https://github.com/hvesalai/sbt-mode.git")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
         (:name scss-mode
          :type git
@@ -323,6 +332,9 @@
         ace-jump-mode
         yasnippet
 
+        ;; Scala
+        scala-mode2
+        sbt-mode
 
         ;; Clojure
         clojure-mode
