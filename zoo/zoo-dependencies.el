@@ -70,9 +70,9 @@
          :type git
          :url "http://github.com/roman/golden-ratio.el.git")
 
-        (:name navorski.el
+        (:name navorski
          :type git
-         :url  "ssh://git@bitbucket.org/romanandreg/navorski.el.git")
+         :url  "http://github.com/roman/navorski.el")
 
         (:name birdseye
          :type git
@@ -265,8 +265,8 @@
          :url "http://github.com/emacsmirror/popup.git")
 
 	(:name magit
-	 :type git
-	 :url "https://github.com/magit/magit.git")
+         :type git
+         :url "https://github.com/magit/magit.git")
 
         (:name auto-complete
          :type git
@@ -291,7 +291,7 @@
         evil-paredit
 
         multi-term
-        navorski.el
+        navorski
         proctor-mode
 
         scss-mode
