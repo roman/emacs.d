@@ -1,3 +1,6 @@
+(require 'evil)
+(require 'window-numbering)
+(require 'surround)
 (require 'em-glob)
 (require 'golden-ratio)
 (require 'uniquify)
@@ -7,8 +10,26 @@
 (require 'lineker)
 (require 'anzu)
 (require 'ace-jump-mode)
+
+;; ruby support
+(require 'enh-ruby-mode)
+(require 'robe)
+(require 'rvm)
+(require 'inf-ruby)
+
+;; scala support
 (require 'sbt-mode)
 (require 'scala-mode2)
+
+;; clojure support
+(require 'clojure-mode)
+(require 'cider)
+(require 'rainbow-delimiters)
+(require 'paredit)
+(require 'evil-paredit)
+
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
 (global-anzu-mode)
 
@@ -20,6 +41,8 @@
 
 ;; Number the windows for easy access (alt-#)
 (window-numbering-mode 1)
+
+(surround-mode 1)
 
 ;; Show both line and column number
 (column-number-mode 1)
@@ -51,23 +74,24 @@
 ;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
 
+
 ;; Default folder for ephemeral content
 (defvar zoo-ephemeral-dir "~/.emacs.ephemeral/")
 
-;; Keep all backup files in ephemeral
-(defvar user-temporary-file-directory (concat zoo-ephemeral-dir "tmp/"))
-(make-directory user-temporary-file-directory t)
-(setq backup-by-copying t)
-(setq backup-directory-alist `(("." . ,user-temporary-file-directory)))
+;; ;; Keep all backup files in ephemeral
+;; (defvar user-temporary-file-directory (concat zoo-ephemeral-dir "tmp/"))
+;; (make-directory user-temporary-file-directory t)
+;; (setq backup-by-copying t)
+;; (setq backup-directory-alist `(("." . ,user-temporary-file-directory)))
 
 ;; Give me a space on the right for line numbers
 (setq linum-format "%3d ")
 
-;; When having windows with repeated filenames, uniquify them
-;; by the folder they are in rather those annoying <2>,<3>,.. etc
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-; don't screw special buffers
-(setq uniquify-ignore-buffers-re "^\\*")
+;; ;; When having windows with repeated filenames, uniquify them
+;; ;; by the folder they are in rather those annoying <2>,<3>,.. etc
+;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+;; ; don't screw special buffers
+;; (setq uniquify-ignore-buffers-re "^\\*")
 
 (setq notify-delay '(0 0 0))
 

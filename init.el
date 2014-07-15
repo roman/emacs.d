@@ -4,6 +4,7 @@
 
 (setq notify-method 'notify-via-message)
 (require 'zoo-dependencies)
+
 (require 'zoo-basics)
 (require 'zoo-rainbow-delimiters)
 (require 'zoo-paredit)

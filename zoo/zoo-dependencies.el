@@ -72,7 +72,7 @@
 
         (:name navorski
          :type git
-         :url  "http://github.com/roman/navorski.el")
+         :url  "http://github.com/roman/navorski.el.git")
 
         (:name birdseye
          :type git
@@ -110,6 +110,15 @@
          :type git
          :url "https://github.com/syohex/emacs-anzu.git")
 
+        (:name ido-ubiquitous
+         :type git
+         :url "https://github.com/DarwinAwardWinner/ido-ubiquitous.git")
+
+        (:name flx
+         :type git
+         :url "https://github.com/lewang/flx.git")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
         (:name s
@@ -129,6 +138,7 @@
          :url "https://github.com/syohex/emacs-git-gutter.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
         (:name scala-mode2
          :type git
          :url "https://github.com/hvesalai/scala-mode2.git")
@@ -158,31 +168,44 @@
          :type git
          :url "http://github.com/ajkavanagh/coffeelintnode.git")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-        (:name rinari
-         :type git
-         :url "http://github.com/eschulte/rinari.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
-        (:name ac-nrepl
+        (:name robe
          :type git
-         :url "http://github.com/purcell/ac-nrepl.git")
+         :url "https://github.com/dgutov/robe.git")
+
+        (:name rvm
+         :type git
+         :url "https://github.com/senny/rvm.el.git")
+
+        (:name enhanced-ruby-mode
+         :type git
+         :url "https://github.com/zenspider/enhanced-ruby-mode.git")
+
+        (:name inf-ruby
+         :type git
+         :url "https://github.com/nonsequitur/inf-ruby.git")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
         (:name clojure-mode
          :type git
-         :url "https://github.com/technomancy/clojure-mode.git")
+         :url "https://github.com/clojure-emacs/clojure-mode.git")
+
+        (:name cider
+         :type git
+         :url "https://github.com/clojure-emacs/cider")
+
+        (:name cider-inspect
+         :type git
+         :url "https://github.com/clojure-emacs/cider-inspect")
 
         (:name rainbow-delimiters
          :type git
          :url "http://github.com/jlr/rainbow-delimiters.git")
 
-        (:name nrepl.el
-         :type git
-         :url "https://github.com/kingtim/nrepl.el.git")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -264,13 +287,33 @@
          :type git
          :url "http://github.com/emacsmirror/popup.git")
 
-	(:name magit
+        (:name magit
          :type git
          :url "https://github.com/magit/magit.git")
 
         (:name auto-complete
          :type git
-         :url "http://github.com/emacsmirror/auto-complete.git")))
+         :url "http://github.com/emacsmirror/auto-complete.git")
+
+        (:name color-theme-monokai
+         :type git
+         :url "https://github.com/oneKelvinSmith/monokai-emacs.git")
+
+        (:name color-theme-sanityinc-tomorrow
+         :type git
+         :url "https://github.com/purcell/color-theme-sanityinc-tomorrow.git")
+
+        (:name color-theme-moe
+         :type git
+         :url "https://github.com/kuanyui/moe-theme.el.git")
+
+        (:name color-theme-ample
+         :type git
+         :url "https://github.com/jordonbiondo/ample-theme.git")
+
+        (:name color-theme-ujelly
+         :type git
+         :url "https://github.com/marktran/color-theme-ujelly.git")))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;;- Setting my dependencies
@@ -302,8 +345,10 @@
         coffee-mode
         coffeelintmode
 
-	anzu
-        tracker.el
+        ido-ubiquitous
+        flx
+
+        anzu
         paredit
         hlinum
         magit
@@ -339,10 +384,7 @@
         ;; Clojure
         clojure-mode
         rainbow-delimiters
-        edn.el
-        ;; swank-clojure
-        sisyphus-mode
-        nrepl.el
+        cider
 
         ;; Puppet
         puppet-mode
@@ -353,17 +395,23 @@
 
         ;; Ruby
         ruby-mode
-        ruby-compilation
+        enhanced-ruby-mode
+        robe
+        rvm
         inf-ruby
         ri
         ruby-block
         ruby-end
 
         ;; Rails
-        rinari
         rspec-mode
 
         ;; Color Themes
+        color-theme-monokai
+        color-theme-sanityinc-tomorrow
+        color-theme-ample
+        color-theme-moe
+        color-theme-ujelly
         color-theme))
 
 (el-get 'sync zoo-el-get-packages)
