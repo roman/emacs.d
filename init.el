@@ -1,10 +1,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/zoo"))
-(add-to-list 'load-path (expand-file-name "~/maestro/"))
-(add-to-list 'load-path (expand-file-name "~/maestro/integration/emacs"))
 
-(setq notify-method 'notify-via-message)
-(require 'zoo-dependencies)
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
 
+(require 'birdseye)
 (require 'zoo-basics)
 (require 'zoo-rainbow-delimiters)
 (require 'zoo-paredit)
@@ -23,6 +22,3 @@
 (require 'zoo-recentf-history-etc)
 (require 'zoo-find)
 (require 'dss-hook-management)
-
-(require 'birdseye)
-(require 'maestro)

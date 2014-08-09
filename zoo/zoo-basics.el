@@ -1,6 +1,5 @@
 (require 'evil)
 (require 'window-numbering)
-(require 'surround)
 (require 'em-glob)
 (require 'golden-ratio)
 (require 'uniquify)
@@ -42,7 +41,7 @@
 ;; Number the windows for easy access (alt-#)
 (window-numbering-mode 1)
 
-(surround-mode 1)
+;; (surround-mode 1)
 
 ;; Show both line and column number
 (column-number-mode 1)

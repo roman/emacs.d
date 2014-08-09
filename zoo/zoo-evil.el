@@ -221,6 +221,6 @@
 (global-set-key (kbd "<f7> r") 'roman-jack-in)
 
 (evil-mode 1)
-(global-surround-mode 1)
+;; (global-surround-mode 1)
 
 (provide 'zoo-evil)

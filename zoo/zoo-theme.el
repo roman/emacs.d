@@ -1,7 +1,7 @@
-(require 'ample-theme)
-(require 'monokai-theme)
-(require 'ujelly-theme)
-(require 'moe-theme)
+;; (require 'ample-theme)
+;; (require 'monokai-theme)
+;; (require 'ujelly-theme)
+;; (require 'moe-theme)
 (require 'color-theme-sanityinc-tomorrow)
 
 
@@ -17,7 +17,7 @@
 ;; (load-theme 'zenburn t)
 ;; (load-theme 'ujelly t)
 ;; (load-theme 'moe-radr t)
-(load-theme 'sanityinc-tomorrow-night t)
-(load-theme 'ample t)
+;; (load-theme 'ample t)
+(load-theme 'sanityinc-tomorrow-eighties t)
 
 (provide 'zoo-theme)

@@ -1,4 +1,6 @@
 (require 'zoo-basics)
+(require 'saveplace)
+(require 'recentf)
 
 ;; Persist code bookmarks
 (setq bookmark-save-flag 1)
@@ -15,13 +17,11 @@
 ;; Add support for saving bookmarks on different
 ;; emacs sessions
 ;; Ask Tavis: what's the difference btw bookmark and this?
-(require 'saveplace)
 (setq save-place-file
       (concat zoo-ephemeral-dir "saveplace"))
 (setq-default save-place t)
 
 ;; Allow to lookup recent accessed files easily
-(require 'recentf)
 (recentf-load-list)
 (recentf-mode 1)
 (setq recentf-save-file
@@ -49,11 +49,5 @@
                           nil t))))
 
 (define-key global-map (kbd "C-x C-r") 'dss/ido-choose-from-recentf)
-
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/session")
-;; (require 'session)
-;; (add-hook 'after-init-hook 'session-initialize)
-;; (setq session-save-file (concat zoo-ephemeral-dir "session"))
-;; (setq session-save-file-coding-system 'utf-8)
 
 (provide 'zoo-recentf-history-etc)
