@@ -66,6 +66,7 @@
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "flycheck-color-mode-line")
+(depends-on "fold-this")
 (depends-on "golden-ratio")
 (depends-on "goto-last-change")
 (depends-on "helm")
