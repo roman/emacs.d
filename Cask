@@ -43,6 +43,9 @@
 (depends-on "haskell-mode")
 (depends-on "ghc")
 
+;; docker
+(depends-on "dockerfile-mode")
+
 ;; color themes
 (depends-on "monokai-theme")
 (depends-on "color-theme-sanityinc-tomorrow")
