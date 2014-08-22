@@ -14,6 +14,7 @@
 ;; git
 (depends-on "git-gutter")
 (depends-on "magit")
+(depends-on "gist")
 
 ;; scala
 (depends-on "scala-mode2")
