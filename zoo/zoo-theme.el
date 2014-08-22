@@ -4,12 +4,8 @@
 ;; (require 'moe-theme)
 (require 'color-theme-sanityinc-tomorrow)
 
-
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:background "red" :underline (:color "#f2777a" :style wave)))))
  '(magit-item-highlight ((t nil))))
 
 ;; (load-theme 'wombat)
