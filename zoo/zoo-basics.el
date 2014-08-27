@@ -9,6 +9,7 @@
 (require 'lineker)
 (require 'anzu)
 (require 'ace-jump-mode)
+(require 'hideshow-org)
 
 ;; ruby support
 (require 'enh-ruby-mode)
@@ -27,6 +28,7 @@
 (require 'paredit)
 (require 'evil-paredit)
 
+(add-to-list 'auto-mode-alist '("Caskfile" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
