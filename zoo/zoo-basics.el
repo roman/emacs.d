@@ -74,7 +74,7 @@
 
 ;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
-
+(put 'narrow-to-region 'disabled nil)
 
 ;; Default folder for ephemeral content
 (defvar zoo-ephemeral-dir "~/.emacs.ephemeral/")
