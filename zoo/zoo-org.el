@@ -83,6 +83,8 @@
         (refile . "Refiled from %s to %S on %t")
         (clock-out . "")))
 
+(setq org-done-keywords
+  '("DONE" "CANCELLED"))
 
 ;; Avoid adding a blank line after doing alt-return on an entry.
 (setq org-blank-before-new-entry '((heading . auto)
@@ -116,12 +118,24 @@
   '((sequence "TODO(t)" "TODAY(y!)" "|" "STARTED(s!)" "|" "PAUSED(p!)" "|" "DONE(d!/!)")
     (sequence "WAITING(w@/!)" "SOMEDAY(S!)" "OPEN(O@)" "|" "CANCELLED(c@/!)")))
 
-
 (defun zoo/org-clocking-p ()
   (interactive)
   (and (fboundp 'org-clocking-p)
        (org-clocking-p)))
 
+(defun zoo/org-is-last-task-done-p ()
+  (interactive)
+  (save-window-excursion
+    (org-clock-goto)
+    (let ((state (org-get-todo-state)))
+      (or (string-equal state "DONE")
+          (string-equal state "CANCELLED")
+          nil))))
+
+(defun zoo/org-clock-in-last ()
+  (interactive)
+  (when (not (zoo/org-is-last-task-done-p))
+    (org-clock-in-last)))
 
 (defun dss/org-current-timestamp ()
   (let ((fmt (concat
@@ -208,6 +222,7 @@
 ;; module
 (define-key f8-map "i" 'org-clock-in)
 (define-key f8-map "o" 'org-clock-out)
+(define-key f8-map "l" 'org-clock-in-last)
 (define-key f8-map "r" 'org-capture)
 (define-key f8-map "c" 'org-clock-cancel)
 (define-key f8-map "-" 'org-clock-goto)
