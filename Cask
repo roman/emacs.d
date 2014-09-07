@@ -61,6 +61,7 @@
 (depends-on "drag-stuff")
 (depends-on "evil")
 (depends-on "evil-paredit")
+(depends-on "evil-surround")
 (depends-on "expand-region")
 (depends-on "epl")
 (depends-on "f")
