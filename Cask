@@ -44,6 +44,10 @@
 (depends-on "haskell-mode")
 (depends-on "ghc")
 
+;; purescript
+(depends-on "purescript-mode")
+(depends-on "psci")
+
 ;; docker
 (depends-on "dockerfile-mode")
 
