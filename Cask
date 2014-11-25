@@ -34,6 +34,7 @@
 (depends-on "enh-ruby-mode")
 (depends-on "ruby-block")
 (depends-on "ruby-end")
+(depends-on "haml-mode")
 
 ;; clojure
 (depends-on "clojure-mode")
@@ -52,8 +53,11 @@
 (depends-on "dockerfile-mode")
 
 ;; color themes
-(depends-on "monokai-theme")
 (depends-on "color-theme-sanityinc-tomorrow")
+(depends-on "color-theme-sanityinc-solarized")
+(depends-on "monokai-theme")
+(depends-on "sublime-themes")
+(depends-on "zenburn-theme")
 
 ;; general
 (depends-on "ace-jump-mode")
@@ -79,6 +83,7 @@
 (depends-on "helm-c-yasnippet")
 (depends-on "hideshow-org")
 (depends-on "hlinum")
+(depends-on "ibuffer-vc")
 (depends-on "iedit")
 (depends-on "ido-ubiquitous")
 (depends-on "notify")

@@ -44,10 +44,11 @@
 (evil-define-key 'normal global-state-map
   (kbd ",u") #'undo-tree-visualize)
 
-;; Find defined symbols using ,. in normal mode instead of M-. in
-;; insert mode
-;; (evil-define-key 'normal evil-normal-state-map
-;;   (kbd ",.") 'find-tag)
+
+;;
+;; When using '*' or '#' search for symbols and
+;; not words
+(setq evil-symbol-word-search t)
 
 ;;;;;;;;;;;;;;;;;
 ;; Custom highlights for insert and normal mode

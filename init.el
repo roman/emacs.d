@@ -21,4 +21,5 @@
 (require 'zoo-python)
 (require 'zoo-recentf-history-etc)
 (require 'zoo-find)
+(require 'zoo-ibuffer)
 (require 'dss-hook-management)
