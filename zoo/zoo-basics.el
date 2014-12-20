@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
 (require 'evil)
 (require 'window-numbering)
 (require 'em-glob)
@@ -6,6 +10,7 @@
 (require 'iedit)
 (require 'auto-complete)
 (require 'navorski)
+(require 'flycheck)
 (require 'lineker)
 (require 'anzu)
 (require 'ace-jump-mode)
@@ -69,8 +74,6 @@
 (setq make-backup-files nil)
 (auto-save-mode 0)
 
-;; I want flymake to show me errors
-(setq flymake-log-level 1)
 
 ;; Disable keys that make *me* slower, but can't stop using them.
 (put 'list-buffers 'disabled "Force yourself to use 'C-x b' instead")
@@ -111,5 +114,10 @@
                 select-window-5)))
 (golden-ratio-mode)
 
+;; Flycheck setup
+(be/util-eval-on-load "flycheck"
+  (global-flycheck-mode))
 
 (provide 'zoo-basics)
+
+;;; zoo-basics.el ends here
