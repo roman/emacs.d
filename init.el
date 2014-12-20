@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Code:
+;;; Commentary:
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/zoo"))
 
 (require 'cask "~/.cask/cask.el")
@@ -16,10 +19,13 @@
 (require 'zoo-bookmarks)
 (require 'zoo-whitespace)
 (require 'zoo-ruby)
-(require 'zoo-java)
 (require 'zoo-clojure)
-(require 'zoo-python)
 (require 'zoo-recentf-history-etc)
 (require 'zoo-find)
 (require 'zoo-ibuffer)
+(require 'zoo-powerline)
 (require 'dss-hook-management)
+
+(provide 'init)
+
+;;; init.el ends here
