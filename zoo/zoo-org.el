@@ -13,6 +13,9 @@
 (setq org-clock-persist-file
       (concat zoo-ephemeral-dir ".org-clock-save.el"))
 
+(defvar zoo-annoy-with-clock-in t
+  "Checks if to annoy with clocking in after save")
+
 (setq org-hide-leading-stars t)
 (setq org-show-following-heading t)
 (setq org-show-hierarchy-above t)
@@ -136,6 +139,16 @@
   (interactive)
   (when (not (zoo/org-is-last-task-done-p))
     (org-clock-in-last)))
+
+(defadvice save-buffer (around compile activate)
+  (if zoo-annoy-with-clock-in
+      (if (zoo/org-clocking-p)
+          ad-do-it
+        (if (y-or-n-p "Want to save without clocking in?")
+            ad-do-it
+          nil))
+    ad-do-it))
+
 
 (defun dss/org-current-timestamp ()
   (let ((fmt (concat
