@@ -139,7 +139,7 @@
     (lineker-if-xemacs
      (maphash (lambda (key value)
 		(setq highlights (cons key highlights)))
-	      lineker-current-highlights)
+              lineker-current-highlights)
      (setq highlights lineker-current-highlights))
     (mapcar (lambda (highlight)
               (lineker-remove-highlight highlight)) highlights)))
@@ -161,7 +161,7 @@
    (progn
      (delete-overlay highlight)
      (setq lineker-current-highlights
-	   (delq highlight lineker-current-highlights)))))
+           (delq highlight lineker-current-highlights)))))
 
 (defun lineker-add-highlight (highlight)
   "Adds a highlighted highlight."
@@ -169,10 +169,10 @@
    (progn
      (puthash highlight t lineker-current-highlights)
      (set-extent-face highlight (cons 'lineker-warning-face
-				      (extent-face highlight))))
+                                      (extent-face highlight))))
    (progn
      (setq lineker-current-highlights
-	   (cons highlight lineker-current-highlights))
+           (cons highlight lineker-current-highlights))
      (overlay-put highlight 'face 'lineker-warning-face))))
 
 (defun lineker-our-highlight-p (highlight)
@@ -195,8 +195,8 @@
       (lineker-if-xemacs
        (make-extent begin end)
        (let ((ovl (make-overlay begin end)))
-	 (overlay-put ovl 'lineker t)
-	 ovl)))))
+         (overlay-put ovl 'lineker t)
+         ovl)))))
 
 (defun lineker-get-current-line-highlight ()
   (map-extents
@@ -237,10 +237,10 @@ necessary."
      (map-extents
       (lambda (highlight arg)
 	(if (lineker-our-highlight-p highlight)
-	    (setq estart (min estart (extent-start-position highlight))
-		  eend (max eend (extent-end-position highlight))
-		  change (1- change)
-		  matches (cons highlight matches)))
+            (setq estart (min estart (extent-start-position highlight))
+                  eend (max eend (extent-end-position highlight))
+                  change (1- change)
+                  matches (cons highlight matches)))
 	nil)
       (current-buffer)
       ;; We go through the change region *plus* the to the end of next
@@ -249,12 +249,12 @@ necessary."
       start stop nil 'all-extents-closed)
 
      (mapcar (lambda (highlight)
-	       (if (lineker-our-highlight-p highlight)
-		   (setq estart (min estart (overlay-start highlight))
-			 eend (max eend (overlay-end highlight))
-			 change (1- change)
-			 matches (cons highlight matches))))
-	     (overlays-in start stop)))
+               (if (lineker-our-highlight-p highlight)
+                   (setq estart (min estart (overlay-start highlight))
+                         eend (max eend (overlay-end highlight))
+                         change (1- change)
+                         matches (cons highlight matches))))
+             (overlays-in start stop)))
 
     ;; Now we know the proper start and end points. Remove all highlights
     ;; in that area then and re-evaluate the region.
@@ -385,8 +385,8 @@ See also `lineker-next-overlong-line' function."
         (add-hook 'write-contents-hooks 'lineker-write-contents-hook nil t)
         (setq lineker-current-highlights
               (lineker-if-xemacs
-	       (make-weak-hashtable 1)
-	       nil))
+               (make-weak-hashtable 1)
+               nil))
         (let ((highlights (lineker-find-overlong-lines)))
           (if highlights
               (lineker-replace-all-highlights highlights)))
