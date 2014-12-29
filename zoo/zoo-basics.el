@@ -118,6 +118,10 @@
 (be/util-eval-on-load "flycheck"
   (global-flycheck-mode))
 
+(defun zoo/save-buffer ()
+  (interactive)
+  (save-buffer))
+
 (provide 'zoo-basics)
 
 ;;; zoo-basics.el ends here

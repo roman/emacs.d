@@ -3,7 +3,9 @@
 (require 'org-remember)
 (require 'org-agenda)
 (require 'org-timer)
-(require 'zoo-keybinding)
+(require 'zoo-basics)
+
+;;; Code:
 
 ;; Most of the settings are being ported from Tavis Rudd's org mode
 ;; configuration
@@ -140,14 +142,19 @@
   (when (not (zoo/org-is-last-task-done-p))
     (org-clock-in-last)))
 
-(defadvice save-buffer (around compile activate)
-  (if zoo-annoy-with-clock-in
-      (if (zoo/org-clocking-p)
-          ad-do-it
-        (if (y-or-n-p "Want to save without clocking in?")
+(defadvice zoo/save-buffer (around compile activate)
+  (let* ((current-file (buffer-file-name))
+         (current-ext (and (file-name-extension current-file))))
+    (if (and zoo-annoy-with-clock-in
+             current-file
+             (not (string= "el" current-ext))
+             (not (string= "org" current-ext)))
+        (if (zoo/org-clocking-p)
             ad-do-it
-          nil))
-    ad-do-it))
+          (if (y-or-n-p "Want to save without clocking in?")
+              ad-do-it
+            nil))
+      ad-do-it)))
 
 
 (defun dss/org-current-timestamp ()

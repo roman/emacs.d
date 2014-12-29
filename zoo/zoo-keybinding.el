@@ -8,4 +8,7 @@
   "Keybinding map use only for org mode commands")
 (define-key global-map [(f8)] f8-map)
 
+(define-key global-map
+  (kbd "C-x C-s") 'zoo/save-buffer)
+
 (provide 'zoo-keybinding)

@@ -8,6 +8,7 @@
 
 (require 'birdseye)
 (require 'zoo-basics)
+(require 'zoo-keybinding)
 (require 'zoo-rainbow-delimiters)
 (require 'zoo-paredit)
 (require 'zoo-elisp)
