@@ -22,6 +22,7 @@
 (require 'zoo-theme)
 (require 'zoo-org)
 (require 'zoo-bookmarks)
+(require 'zoo-markdown)
 (require 'zoo-whitespace)
 (require 'zoo-ruby)
 (require 'zoo-clojure)
