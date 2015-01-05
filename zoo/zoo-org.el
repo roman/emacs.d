@@ -4,6 +4,7 @@
 (require 'org-agenda)
 (require 'org-timer)
 (require 'zoo-basics)
+(require 'be-utils)
 
 ;;; Code:
 
@@ -142,6 +143,22 @@
   (when (not (zoo/org-is-last-task-done-p))
     (org-clock-in-last)))
 
+(defun zoo/org-lookup-for-org-buffer ()
+  (->> (buffer-list)
+       (--map (buffer-file-name it))
+       (--filter (and it (string-match ".org$" it)))
+       -first-item))
+
+(defun zoo/org-lookup-for-org-file ()
+  (be/util-locate-dominating-file "*.org"))
+
+(defun zoo/open-org-file ()
+  (interactive)
+  (let* ((buffer-orgfile (zoo/org-lookup-for-org-buffer))
+         (file-orgfile (or buffer-orgfile (zoo/org-lookup-for-org-file))))
+    (when file-orgfile
+      (find-file file-orgfile))))
+
 (defadvice zoo/save-buffer (around compile activate)
   (let* ((current-file (buffer-file-name))
          (current-ext (and (file-name-extension current-file))))
@@ -151,9 +168,13 @@
              (not (string= "org" current-ext)))
         (if (zoo/org-clocking-p)
             ad-do-it
-          (if (y-or-n-p "Want to save without clocking in?")
-              ad-do-it
-            nil))
+          (let ((prev-buffer (current-buffer)))
+            (zoo/open-org-file)
+            (save-window-excursion
+              (switch-to-buffer prev-buffer)
+              (if (y-or-n-p "Want to save without clocking in?")
+                  ad-do-it
+                nil))))
       ad-do-it)))
 
 
@@ -242,7 +263,7 @@
 ;; module
 (define-key f8-map "i" 'org-clock-in)
 (define-key f8-map "o" 'org-clock-out)
-(define-key f8-map "l" 'org-clock-in-last)
+(define-key f8-map "l" 'zoo/org-clock-in-last)
 (define-key f8-map "r" 'org-capture)
 (define-key f8-map "c" 'org-clock-cancel)
 (define-key f8-map "-" 'org-clock-goto)
