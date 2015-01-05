@@ -129,18 +129,16 @@
   (and (fboundp 'org-clocking-p)
        (org-clocking-p)))
 
-(defun zoo/org-is-last-task-done-p ()
+(defun zoo/org-is-last-task-started-p ()
   (interactive)
   (save-window-excursion
     (org-clock-goto)
     (let ((state (org-get-todo-state)))
-      (or (string-equal state "DONE")
-          (string-equal state "CANCELLED")
-          nil))))
+      (string= state "STARTED"))))
 
 (defun zoo/org-clock-in-last ()
   (interactive)
-  (when (not (zoo/org-is-last-task-done-p))
+  (when (zoo/org-is-last-task-started-p)
     (org-clock-in-last)))
 
 (defun zoo/org-lookup-for-org-buffer ()
