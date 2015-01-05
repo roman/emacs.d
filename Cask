@@ -10,6 +10,7 @@
 (depends-on "cask")
 (depends-on "cider")
 (depends-on "cl-lib")
+(depends-on "clojure-cheatsheet")
 (depends-on "clojure-mode")
 (depends-on "coffee-mode")
 (depends-on "color-theme-sanityinc-solarized")
