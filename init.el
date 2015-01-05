@@ -6,6 +6,10 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+;; Allow package-install to add entries to Cask file
+(require 'pallet)
+(pallet-mode 1)
+
 (require 'birdseye)
 (require 'zoo-basics)
 (require 'zoo-keybinding)
